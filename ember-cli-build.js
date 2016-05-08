@@ -5,6 +5,12 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
+
+    codemirror: {
+      modes: ['xml', 'javascript', 'css', 'handlebars', 'markdown', 'htmlmixed'],
+      keyMaps: ['vim', 'emacs', 'sublime'],
+      themes: ['solarized']
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated

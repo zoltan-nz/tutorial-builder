@@ -1,0 +1,16 @@
+<h1>Sandbox</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    {{ivy-codemirror
+          value       = myCode
+          lineNumbers = true
+          mode        = 'htmlmixed'
+          addModeClass= true
+          theme       = 'solarized light'}}
+  </div>
+
+  <div class="col-md-6">
+    {{preview-iframe srcdoc=myCode}}
+  </div>
+</div>

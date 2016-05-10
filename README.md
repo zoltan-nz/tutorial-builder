@@ -1,5 +1,7 @@
 # Tutorial Builder
 
+Live Demo: http://tutorial-builder.surge.sh/sandbox
+
 ## Implementation log
 
 Add Sass
@@ -39,3 +41,7 @@ Iframe settings.
 
 Sources: 
 * [CodeMirror](https://codemirror.net/index.html)
+
+Deployment on surge.sh
+
+    ember build --prod && mv ./dist/index.html ./dist/200.html && surge -p ./dist -d http://tutorial-builder.surge.sh/

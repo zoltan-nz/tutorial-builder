@@ -4,6 +4,8 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'tutorial-builder',
     environment: environment,
+    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
+    firebase: 'https://tutorial-builder.firebaseio.com/',
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {

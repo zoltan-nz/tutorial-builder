@@ -45,3 +45,24 @@ Sources:
 Deployment on surge.sh
 
     ember build --prod && mv ./dist/index.html ./dist/200.html && surge -p ./dist -d http://tutorial-builder.surge.sh/
+
+Add Firebase adapter
+
+Creating Firebase backend
+
+Creating `sandbox` model. Model structure: name:string, source:string
+
+
+
+### Tasks:
+
+* 
+
+
+### Research topics
+
+* Code editors, comparision
+
+* Sandbox, playground sites (codepen, jsbin, etc.)
+
+CodePen merges html, css and js into one html file.

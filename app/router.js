@@ -6,7 +6,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('sandbox');
+  this.route('sandboxes', function() {
+    this.route('sandbox', { path: '/:sandbox_id' });
+  });
 });
 
 export default Router;

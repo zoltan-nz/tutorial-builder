@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:sandbox', 'Unit | Route | sandbox', {
+moduleFor('route:sandboxes', 'Unit | Route | sandboxes', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });

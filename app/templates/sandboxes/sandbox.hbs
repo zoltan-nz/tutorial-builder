@@ -1,9 +1,12 @@
 <h1>Sandbox</h1>
 
+{{input value=model.name key-press='updateMyCode'}}
+
 <div class="row">
   <div class="col-md-6">
     {{ivy-codemirror
-          value       = myCode
+          value       = model.source
+          valueUpdated=(action 'updateMyCode')
           lineNumbers = true
           mode        = 'htmlmixed'
           addModeClass= true
@@ -11,6 +14,6 @@
   </div>
 
   <div class="col-md-6">
-    {{preview-iframe srcdoc=myCode}}
+    {{preview-iframe srcdoc=model.source}}
   </div>
 </div>

@@ -1,0 +1,11 @@
+List of Sandboxes
+
+<button {{action 'newSandbox'}}>New</button>
+
+{{#each model as |sandbox|}}
+
+  {{#link-to "sandboxes.sandbox" sandbox}}{{sandbox.name}}{{/link-to}}
+
+{{/each}}
+
+{{outlet}}

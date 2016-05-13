@@ -52,7 +52,12 @@ Creating Firebase backend
 
 Creating `sandbox` model. Model structure: name:string, source:string
 
+Add createa  new sandbox
 
+Save changes to database:
+
+* when rewrite the name of the sandbox
+* when update the code
 
 ### Tasks:
 

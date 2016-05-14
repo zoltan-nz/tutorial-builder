@@ -1,11 +1,14 @@
-List of Sandboxes
+<div class="well well-sm">
+  <h4>List of Files</h4>
 
-<button {{action 'newSandbox'}}>New</button>
+  <ul>
+    {{#each model as |sandbox|}}
+      <li>{{#link-to "sandboxes.sandbox" sandbox}}{{sandbox.name}}{{/link-to}} | <a href="" {{action 'deleteSandbox' sandbox}}>Delete</a></li>
+    {{/each}}
+  </ul>
 
-{{#each model as |sandbox|}}
+  <button {{action 'newSandbox'}} class="btn btn-default">New</button>
 
-  {{#link-to "sandboxes.sandbox" sandbox}}{{sandbox.name}}{{/link-to}}
-
-{{/each}}
+</div>
 
 {{outlet}}

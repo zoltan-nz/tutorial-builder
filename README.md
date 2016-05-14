@@ -59,6 +59,9 @@ Save changes to database:
 * when rewrite the name of the sandbox
 * when update the code
 
+Delete files.
+
+
 ### Tasks:
 
 * 

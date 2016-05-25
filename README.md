@@ -50,26 +50,30 @@ Add Firebase adapter
 
 Creating Firebase backend
 
+## Creating a sandbox page
+
 Creating `sandbox` model. Model structure: name:string, source:string
 
-Add createa  new sandbox
+Add create  new sandbox
 
 Save changes to database:
 
 * when rewrite the name of the sandbox
 * when update the code
 
-Delete files.
+Add delete file option.
 
+## Setting up the database structure
 
-### Tasks:
+...
 
-* 
-
-
-### Research topics
+# Research topics
 
 * Code editors, comparision
+
+- CodeMirror
+- Ace
+[Comparison of JavaScript-based source code editors](https://en.wikipedia.org/wiki/Comparison_of_JavaScript-based_source_code_editors)
 
 * Sandbox, playground sites (codepen, jsbin, etc.)
 

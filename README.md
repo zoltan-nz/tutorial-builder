@@ -65,7 +65,13 @@ Add delete file option.
 
 ## Setting up the database structure
 
-...
+Generating Tutorial model.
+
+Generating Lesson model.
+
+    ember g model lesson name sort:number visited:boolean steps:hasMany tutorial:belongsTo
+
+Generating Step model.
 
 # Research topics
 

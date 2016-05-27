@@ -5,5 +5,5 @@ import { hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
   name: attr(),
-  steps: hasMany('step')
+  lessons: hasMany('lesson')
 });

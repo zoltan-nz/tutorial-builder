@@ -6,6 +6,7 @@ import { belongsTo } from 'ember-data/relationships';
 export default Model.extend({
   name: attr(),
   sort: attr('integer'),
-  detail: attr(),
-  tutorial: belongsTo('tutorial')
+  actionContent: attr(),
+  // actionType: belongsTo('action-type'),
+  lesson: belongsTo('lesson')
 });

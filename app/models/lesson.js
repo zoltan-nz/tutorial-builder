@@ -3,7 +3,7 @@ import attr from 'ember-data/attr';
 import { belongsTo, hasMany } from 'ember-data/relationships';
 
 export default Model.extend({
-  name: attr(),
+  title: attr(),
   sort: attr('number'),
   visited: attr('boolean'),
   steps: hasMany('step'),

@@ -73,6 +73,21 @@ Generating Lesson model.
 
 Generating Step model.
 
+## Creating the Admin Section
+
+* Tutorial CRUD interface
+* Lesson CRUD interface
+* Building Steps
+
+Route structure:
+
+
+    /admin (Tutorial index, add tutorial, delete tutorial)
+      /tutorial/:id (Lesson index, add lesson, delete lesson)
+        /lesson/:id (The tutorial builder screen)
+
+## Playing back the tutorial
+
 # Research topics
 
 * Code editors, comparision
@@ -84,3 +99,5 @@ Generating Step model.
 * Sandbox, playground sites (codepen, jsbin, etc.)
 
 CodePen merges html, css and js into one html file.
+
+Babel REPL: https://github.com/babel/babel.github.io/blob/master/scripts/repl.js

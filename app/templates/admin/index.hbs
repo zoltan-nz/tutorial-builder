@@ -1,0 +1,14 @@
+<h1>List of Tutorials</h1>
+
+<form class="form-inline">
+  <div class="form-group">
+    {{input class="form-control" value=newTutorialName placeholder="Name of the tutorial"}}
+    <button {{action 'createTutorial' newTutorialName}} type="submit" class="btn btn-success">Create a new tutorial</button>
+  </div>
+</form>
+
+<div class="list-group">
+  {{#each model as |tutorial|}}
+    <li class="list-group-item">{{#link-to "admin.tutorial" tutorial}}{{tutorial.name}}{{/link-to}}</li>
+  {{/each}}
+</div>

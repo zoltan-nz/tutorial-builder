@@ -7,4 +7,12 @@
   </div>
 </form>
 
+<br>
+
+<div class="list-group">
+  {{#each model.lessons as |lesson|}}
+    <li class="list-group-item">{{#link-to "admin.tutorial.lesson" lesson}}{{lesson.title}}{{/link-to}}</li>
+  {{/each}}
+</div>
+
 {{outlet}}

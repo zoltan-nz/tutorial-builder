@@ -86,7 +86,27 @@ Route structure:
       /tutorial/:id (Lesson index, add lesson, delete lesson)
         /lesson/:id (The tutorial builder screen)
 
-## Playing back the tutorial
+
+
+## Tutorial play-back 
+
+# Other challenges
+
+## Adding breadcrumb component
+
+Installing the component:
+
+    ember install ember-crumbly
+    
+Add this line to the application template:
+
+    {{bread-crumbs tagName="ol" outputStyle="bootstrap" linkable=true}}
+
+Changing separator in bootstrap variables: `>`
+
+Override the teamplate with default `Home` prefix.
+
+
 
 # Research topics
 

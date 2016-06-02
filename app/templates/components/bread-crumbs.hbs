@@ -1,0 +1,8 @@
+<li>{{#link-to 'index'}}Home{{/link-to}}</li>
+{{#each routeHierarchy as |route|}}
+  {{#if hasBlock}}
+    {{yield this route}}
+  {{else}}
+    {{bread-crumb route=route breadCrumbs=this}}
+  {{/if}}
+{{/each}}

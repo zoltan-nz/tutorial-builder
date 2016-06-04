@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Ember from "ember";
 
 export default Ember.Route.extend({
 
@@ -9,11 +9,14 @@ export default Ember.Route.extend({
   actions: {
 
     newSandbox() {
-      this.store.createRecord('sandbox', {name:'New Sandox', source: ''}).save().then( response => this.redirectTo('sandboxes.sendbox', response));
+      this.store.createRecord('sandbox', {name: 'file_name.html', source: ''})
+        .save()
+        .then(sandbox => this.transitionTo('sandboxes.sandbox', sandbox));
     },
 
     deleteSandbox(sandbox) {
-      sandbox.destroyRecord();
+      sandbox.destroyRecord()
+        .then(() => this.transitionTo('sandboxes'));
     }
   }
 

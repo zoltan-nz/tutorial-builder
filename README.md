@@ -104,7 +104,9 @@ Add this line to the application template:
 
 Changing separator in bootstrap variables: `>`
 
-Override the teamplate with default `Home` prefix.
+Override the template with default `Home` prefix.
+
+Add dynamic breadcrumbs to subroutes.
 
 
 
@@ -121,3 +123,5 @@ Override the teamplate with default `Home` prefix.
 CodePen merges html, css and js into one html file.
 
 Babel REPL: https://github.com/babel/babel.github.io/blob/master/scripts/repl.js
+
+Codecademy and React: https://www.infoq.com/articles/reactjs-codecademy?utm_source=hacker%2520news&utm_medium=link&utm_campaign=react_js_article

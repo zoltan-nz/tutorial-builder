@@ -1,0 +1,16 @@
+<h2>Tutorial: {{model.name}}</h2>
+
+<form class="form-inline">
+  <div class="form-group">
+    {{input class="form-control" value=newLessonTitle placeholder="Title of the new lesson"}}
+    <button {{action 'createLesson' newLessonTitle}} type="submit" class="btn btn-success">Create a new lesson</button>
+  </div>
+</form>
+
+<br>
+
+<div class="list-group">
+  {{#each model.lessons as |lesson|}}
+    <li class="list-group-item">{{#link-to "admin.tutorial.lesson" lesson}}{{lesson.title}}{{/link-to}}</li>
+  {{/each}}
+</div>

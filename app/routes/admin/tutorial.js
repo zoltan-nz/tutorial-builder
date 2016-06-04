@@ -1,14 +1,18 @@
-import Ember from 'ember';
+import Ember from "ember";
 
 export default Ember.Route.extend({
 
-actions: {
+  afterModel(tutorial) {
+    this.set('breadCrumb', {title: tutorial.get('name')});
+  },
 
-  createLesson(title) {
-    const tutorial = this.controller.get('model');
+  actions: {
 
-    this.store.createRecord('lesson', { title, tutorial }).save();
-    tutorial.save();
+    createLesson(title) {
+      const tutorial = this.controller.get('model');
+
+      this.store.createRecord('lesson', {title, tutorial}).save();
+      tutorial.save();
+    }
   }
-}
 });

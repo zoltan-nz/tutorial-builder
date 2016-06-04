@@ -11,7 +11,7 @@ Router.map(function() {
   });
   this.route('admin', function() {
     this.route('tutorial', { path: '/tutorial/:tutorial_id' }, function() {
-      this.route('lesson', { path: '/lesson/:id' });
+      this.route('lesson', { path: '/lesson/:lesson_id' });
     });
   });
 });

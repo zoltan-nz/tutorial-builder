@@ -108,6 +108,17 @@ Override the template with default `Home` prefix.
 
 Add dynamic breadcrumbs to subroutes.
 
+## Setup development database with ember-mirage
+
+* Install mirage
+
+    ember install ember-cli-mirage
+
+* Splitting adapter based on the environment (development, production)
+
+* Trying out ember mock server, which is a node.js server.
+
+    ember g http-mock tutorials
 
 
 # Research topics

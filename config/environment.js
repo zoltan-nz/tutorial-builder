@@ -8,10 +8,10 @@ module.exports = function(environment) {
     locationType: 'auto',
 
     firebase: {
-      apiKey: 'xyz',
-      authDomain: 'YOUR-FIREBASE-APP.firebaseapp.com',
-      databaseURL: 'https://YOUR-FIREBASE-APP.firebaseapp.com',
-      storageBucket: 'YOUR-FIREBASE-APP.appspot.com',
+      apiKey: 'AIzaSyBEngovFuK5B4FFoScc32ikHqShDKavun4',
+      authDomain: 'tutorial-builder.firebaseapp.com',
+      databaseURL: 'https://tutorial-builder.firebaseio.com',
+      storageBucket: 'tutorial-builder.appspot.com',
     },
 
     // if using ember-cli-content-security-policy

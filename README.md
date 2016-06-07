@@ -129,6 +129,11 @@ Finally, I created a rails api server. Repo: https://github.com/zoltan-nz/tutori
 
 * Updating Firebase configuration in configuration file.
 
+### Database update is too fast
+
+Updating the database after each keystroke is overkill and not efficient. Database is still in lock phase, so have to setup a latency updating mechanism.
+I did it with using Ember run debounce method. 
+
 # Research topics
 
 * Code editors, comparision

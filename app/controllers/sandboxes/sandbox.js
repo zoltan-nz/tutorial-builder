@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
   actions: {
 
     updateMyCode() {
-      this.get('model').save();
+      this.get('model').updateWithLatency();
     }
   }
 });

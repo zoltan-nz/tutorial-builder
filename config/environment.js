@@ -4,10 +4,23 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'tutorial-builder',
     environment: environment,
-    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
-    firebase: 'https://tutorial-builder.firebaseio.com/',
     baseURL: '/',
     locationType: 'auto',
+
+    firebase: {
+      apiKey: 'xyz',
+      authDomain: 'YOUR-FIREBASE-APP.firebaseapp.com',
+      databaseURL: 'https://YOUR-FIREBASE-APP.firebaseapp.com',
+      storageBucket: 'YOUR-FIREBASE-APP.appspot.com',
+    },
+
+    // if using ember-cli-content-security-policy
+    contentSecurityPolicy: {
+      'script-src': "'self' 'unsafe-eval' apis.google.com",
+      'frame-src': "'self' https://*.firebaseapp.com",
+      'connect-src': "'self' wss://*.firebaseio.com https://*.googleapis.com"
+    },
+
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -32,6 +45,8 @@ module.exports = function(environment) {
     ENV['ember-cli-mirage'] = {
       enabled: false
     };
+
+    ENV.host = 'http://localhost:3000';
   }
 
   if (environment === 'test') {

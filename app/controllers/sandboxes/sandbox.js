@@ -1,11 +1,11 @@
-import Ember from 'ember';
+import Ember from "ember";
 
 export default Ember.Controller.extend({
 
   actions: {
 
     updateMyCode() {
-      Ember.run.once(this, () => this.get('model').save(), 500);
+      this.get('model').save();
     }
   }
 });

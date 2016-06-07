@@ -4,5 +4,10 @@ import attr from 'ember-data/attr';
 
 export default Model.extend({
   name: attr(),
-  source: attr()
+  source: attr(),
+
+  save() {
+    console.log('save called');
+    this._super();
+  }
 });

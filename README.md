@@ -120,6 +120,14 @@ Add dynamic breadcrumbs to subroutes.
 
     ember g http-mock tutorials
 
+These two options mainly for testing purposes and cannot store data.
+Finally, I created a rails api server. Repo: https://github.com/zoltan-nz/tutorial-builder-backend
+
+* Removing mirage and mock server from the repo.
+
+* Updating packages: Ember 2.6, EmberFire 2.0, Firebase 3.0
+
+* Updating Firebase configuration in configuration file.
 
 # Research topics
 

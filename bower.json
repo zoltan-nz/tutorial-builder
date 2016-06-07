@@ -1,14 +1,12 @@
 {
   "name": "tutorial-builder",
   "dependencies": {
-    "ember": "~2.6.0-beta.4",
+    "ember": "^2.6.0",
     "ember-cli-shims": "0.1.1",
     "ember-cli-test-loader": "0.2.2",
-    "ember-qunit-notifications": "0.1.0",
+    "ember-qunit-notifications": "^0.1.0",
     "bootstrap-sass": "^3.3.6",
-    "codemirror": "~5.14.2",
-    "firebase": "^2.4.2",
-    "pretender": "~1.1.0",
-    "Faker": "~3.1.0"
+    "codemirror": "^5.15.2",
+    "firebase": "^3.0.0"
   }
 }

@@ -1,19 +1,23 @@
 <h1>Sandbox</h1>
 
-{{input value=model.name key-press='updateMyCode' class='form-control'}}
+{{input value=model.name key-press='updateSandboxName' class='form-control'}}
 
 <br>
 
 <div class="row">
   <div class="col-md-6">
+
     {{if model.hasDirtyAttributes 'Not Saved' 'Saved'}}
-    {{ivy-codemirror
-          value       = model.source
-          valueUpdated=(action 'updateMyCode')
-          lineNumbers = true
-          mode        = 'htmlmixed'
-          addModeClass= true
-          theme       = 'solarized light'}}
+
+    {{ivy-codemirror options=(hash
+        lineNumbers  = true
+        mode         = 'htmlmixed'
+        addModeClass = true
+        theme        = 'solarized light')
+        value        = model.source
+        valueUpdated = (action 'updateSandboxSource')
+    }}
+
   </div>
 
   <div class="col-md-6">

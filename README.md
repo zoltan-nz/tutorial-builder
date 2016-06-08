@@ -129,10 +129,16 @@ Finally, I created a rails api server. Repo: https://github.com/zoltan-nz/tutori
 
 * Updating Firebase configuration in configuration file.
 
-### Database update is too fast
+### Database update is too fast and high frequency
 
 Updating the database after each keystroke is overkill and not efficient. Database is still in lock phase, so have to setup a latency updating mechanism.
 I did it with using Ember run debounce method. 
+
+* I tried to create an addon for adding Emmet support for CodeMirror, I realized, that CodeMirror package updated and changed significantly.
+The addon still not working properly.
+And meanwhile I had other challenge, the update action isn't fired any more, so I cannot save changes in sandbox.
+
+This changes nicely explained in the addon documentation and basically follows the new frontend pattern: data down, actions up. Instead of the value change automatically, with "two-way" bindings, any change will fire an action which can manage this new changes. So I had to update the `updateSandboxSource` method in the controller.
 
 # Research topics
 

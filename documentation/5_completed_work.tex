@@ -1,0 +1,70 @@
+\chapter{Completed Work}
+
+I develop a prototype web app, where the content producer can create a simple step by step tutorial, and the content consumer can "watch" this tutorial and can interact with it.
+
+There are two different users:
+\begin{itemize}
+\item content producer, let's call teacher
+\item content consumer, let's call student
+\end{itemize}
+
+\section{Requirements}
+
+Requirements from the teacher perspective:
+\begin{itemize}
+\item Teacher can navigate to Admin page.
+\item Teacher can create a new tutorial.
+\item Teacher can add steps to the tutorial.
+\item A step could be four different type:
+\begin{itemize}
+\item Instruction type is a text content.
+\item Html type, which adding content to the html editor box.
+\item Css type, which adding content to the css editor box.
+\item JavaScript type, which adding content to the javascript editor box.
+\item Teacher can modify the sort of the steps with reorganizing with drag and drop.
+\end{itemize}
+\end{itemize}
+
+Requirements from the student perspective:
+\begin{itemize}
+\item Student can see a list of tutorials.
+\item Student can click on a tutorial and can see the steps.
+\item Steps are played in sort.
+\item Student can "play" and "watch" the steps.
+\item Student can "pause" and step "backward".
+\end{itemize}
+
+User interface requirements:
+\begin{itemize}
+\item The tutorial screen has five area:
+\item Instruction area
+\item Html code editor textarea.
+\item Css code editor textarea.
+\item Javascript code editor textarea.
+\item Html preview textarea.
+\item The main website has two main section:
+\item Admin page where Teacher can edit tutorials.
+\item Tutorials page where Students can select and watch tutorials.
+\end{itemize}
+
+\section{The development environment}
+
+Following the most modern standard of web applications, I separate the user faced frontend development and the data store, backend development.
+
+The user face frontend application uses Ember.js frontend framework. The primer data store is Firebase cloud based database, however I already created a Ruby on Rails application which is running when the application is in development mode.
+
+Ember.js development requires Node.js on the development machine to run the development environment. This development environment helps to run and modify frontend code quickly and it generates the final, deployable production code also. The production version of the application is only a static website. It means, there is one index.html, two JavaScript files and two CSS files.
+
+\section{Frontend features}
+
+The look and feel of the application will follow the standard Bootstrap style. Bootstrap is added to the project. I uses SaSS version of the Bootstrap, so I can customize it with the modification of the SaSS variables. SaSS is a modern CSS development environment, helps to programmatically modify the CSS.
+
+The home page of the application is only a placeholder. I added a navigation bar with the following links: Home, Sandbox, Tutorials, Admin.
+
+I implemented a breadcrumb bar also, which helps in navigation.
+
+I created first a Sandbox area, where I experiment with the CodeMirror code editor and an IFrame, which shows the preview. This Sandbox page contains the editor. When the source code is updated, the preview page automatically shows the generated website. This features uses Ember.js default two-way bindings capability.
+
+Database management is already implemented. The main adapter is the Firebase adapter, which automatically update data to the Firebase server. Firebase is a real time database. The limited, free to use version is enough for experimenting and for demo.
+
+The secondary adapter is a JSONApi Adapter. JSON Api \cite{jsonapi} is a new standard of data communication format. This is the Ember.js default adapter.

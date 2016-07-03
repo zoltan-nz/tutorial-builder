@@ -1,0 +1,123 @@
+\chapter{Background and Related Work}\label{C:background}
+
+During the development and research work, I found a few related interesting projects. These are similar or partly I can use them.
+
+\section{CodeMirror Movie}
+
+This project is interesting, because I found it, when I checked the most popular web-based code editor tool, CodeMirror website. The creator of the CodeMirror wanted to present his tool with a realistic way, so he created CodeMirror Movie. \cite{cm-movie}
+
+This solution highly coupled with CodeMirror, it is like an add-on, so it is possible to attach any CodeMirror implementation. (More about CodeMirror in the next section.)
+
+Adding CodeMirror Movie to our project is quite straightforward. The open source repository provides a CSS and a JS file, which has to add into our page.
+
+This tool is mainly target web-developers, who can add code and scripts to their websites.
+
+Editing "the movie" script is manual. There is a simple syntax which control the presentation steps and this script should be added to the textarea which will be in the code editor.
+
+We clearly see, that it is a very effective way to build a presentation, however it requires real development skills.
+
+Pros:
+\begin{itemize}
+\item simple, lightweight implementation
+\item easy to add your project if you use CodeMirror and you are a developer
+\item simple script language to manage the presentation
+\item user can use the code editor to try out the presented solution
+\end{itemize}
+Cons:
+\begin{itemize}
+\item mainly for developers only
+\item highly coupled with CodeMirror
+\end{itemize}
+
+
+\section{Comparison of online code editors}
+
+There are 3 populars web based code editors: CodeMirror, Ace Editor and Monaco.
+
+CodeMirror and Ace Editor are commonly used on websites and different projects. Monaco is a new solution from Microsoft and it is extracted from their popular Microsoft Visual Studio Code developer tool.
+
+There is not significant differences between them. All has the most important code editor features, like supporting more than 100 languages, autocompletion, syntax highlighting, controlling with shortcuts.
+
+I choose CodeMirror, because it has already Ember.js support. Thanks for the ivy-codemirror Ember addon, it can be added to any Ember.js project with the installation of the addon.
+
+\begin{tabular}{| l | l |}
+\hline
+& CodeMirror \\
+\hline
+Github link & \url{https://github.com/codemirror/CodeMirror} \\
+\hline
+Website & \url{http://codemirror.net/} \\
+\hline
+Popularity (GitHub Star) & 9396 \\
+\hline
+Ember.js Addon & \url{https://www.emberobserver.com/addons/ivy-codemirror} \\
+\hline
+\end{tabular}
+
+\begin{tabular}{| l | l |}
+\hline
+& Ace Editor \\
+\hline
+Github link & \url{https://github.com/ajaxorg/ace} \\
+\hline
+Website & \url{https://ace.c9.io} \\
+\hline
+Popularity (GitHub Star) & 12950 \\
+\hline
+Ember.js Addon & doesn't exists \\
+\hline
+\end{tabular}
+
+\begin{tabular}{| l | l |}
+\hline
+& Monaco \\
+\hline
+Github link & \url{https://github.com/Microsoft/monaco-editor} \\
+\hline
+Website & \url{https://microsoft.github.io/monaco-editor/} \\
+\hline
+Popularity (GitHub Star) & 2322 \\
+\hline
+Ember.js Addon & doesn't exists \\
+\hline
+\end{tabular}
+
+
+
+\section{Reviewing of code sharing websites}
+
+We can use code editor and sharing platforms also when we want to demo a small feature or describe a problem. These websites are a combination of code editors and an iframe where we can see the preview of the code snippets.
+
+Common feature to split the screen and providing different windows for editing html, css and javascript separately.
+
+User can save the edited content also. Most of them can be embed in a blog post or in other website.
+
+Most important findings:
+\begin{itemize}
+\item All use Code Mirror as code editor
+\item All of them separate the css, html and javascript editing in different screens, but they merge to one file and preview this merged html file in an iframe.
+\item Saving the different type of code (css, javascript, html) separately.
+\end{itemize}
+
+
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+& Code Pen & JSBin & JSFiddle & Ember Twiddle \\
+\hline
+Link to open source project & not open source & [1] & not open source & [2]  \\
+\hline
+Website & [3] & [4] & [5] & [6] \\
+\hline
+Code Editor & Code Mirror & Code Mirror & Code Mirror & Code Mirror \\
+\hline
+Support embedding & yes & yes & yes & yes \\
+\hline
+\end{tabular}\\
+
+\\
+1 \url{https://github.com/jsbin/jsbin} \\
+2 \url{https://github.com/ember-cli/ember-twiddle} \\
+3 \url{http://codepen.io} \\
+4 \url{http://jsbin.com} \\
+5 \url{https://jsfiddle.net/} \\
+6 \url{https://ember-twiddle.com/} \\

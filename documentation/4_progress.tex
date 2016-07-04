@@ -1,51 +1,19 @@
 \chapter{Completed Work}
 
-I develop a prototype web app, where the content producer can create a simple step by step tutorial, and the content consumer can "watch" this tutorial and can interact with it.
+\section{The technology of choice}
 
-There are two different users:
-\begin{itemize}
-\item content producer, let's call teacher
-\item content consumer, let's call student
-\end{itemize}
+One of the most popular programming languages in web development is JavaScript. The usage of this frontend focused technology is growing quickly.  It is the 7th on Tiobe Index, which is a good indicator of programming languages popularity. \cite{tiobe}
 
-\section{Requirements}
+Learning and teaching JavaScript, HTML and CSS is important. My tool focuses on this three main building blocks of the web.
 
-Requirements from the teacher perspective:
-\begin{itemize}
-\item Teacher can navigate to Admin page.
-\item Teacher can create a new tutorial.
-\item Teacher can add steps to the tutorial.
-\item A step could be four different type:
-\begin{itemize}
-\item Instruction type is a text content.
-\item Html type, which adding content to the html editor box.
-\item Css type, which adding content to the css editor box.
-\item JavaScript type, which adding content to the javascript editor box.
-\item Teacher can modify the sort of the steps with reorganizing with drag and drop.
-\end{itemize}
-\end{itemize}
+Building a frontend heavy application, with a dynamic, user-friendly interface is more common nowadays. In the last few years JavaScript based frontend frameworks became a matured, production ready tools. Server side technologies, like database management and time and resource heavy processes are separated from the user focused, design driven view layer, which is developed with usage of frontend frameworks.
 
-Requirements from the student perspective:
-\begin{itemize}
-\item Student can see a list of tutorials.
-\item Student can click on a tutorial and can see the steps.
-\item Steps are played in sort.
-\item Student can "play" and "watch" the steps.
-\item Student can "pause" and step "backward".
-\end{itemize}
+The most popular tools are Angular.js, React.js and Ember.js. In my project I use Ember.js. It is an "opinionated" framework. Opinionet, convention over configuration driven framework means, that developers should follow specific conventions, instead of freely using the tool. A more strict environment helps to adapt the best practices and speed up the development process also.
 
-User interface requirements:
-\begin{itemize}
-\item The tutorial screen has five area:
-\item Instruction area
-\item Html code editor textarea.
-\item Css code editor textarea.
-\item Javascript code editor textarea.
-\item Html preview textarea.
-\item The main website has two main section:
-\item Admin page where Teacher can edit tutorials.
-\item Tutorials page where Students can select and watch tutorials.
-\end{itemize}
+Certainly, we still have to store data and information, so we cannot live without backend and server technology. Luckily there are already cloud-based tools for managing databases. I use Firebase, which is a service provided by Google. Firebase is a cloud-based database, document-store solution and easy to integrate with Ember.js.
+
+Additionally, I build a traditional backend server application also to support development and experimenting with a real server side and a cloud-based solutions parallel. My preferred technology on backend side is Ruby on Rails, a popular, also opinionated and convention over configuration driven backend framework.
+
 
 \section{The development environment}
 
@@ -68,3 +36,5 @@ I created first a Sandbox area, where I experiment with the CodeMirror code edit
 Database management is already implemented. The main adapter is the Firebase adapter, which automatically update data to the Firebase server. Firebase is a real time database. The limited, free to use version is enough for experimenting and for demo.
 
 The secondary adapter is a JSONApi Adapter. JSON Api \cite{jsonapi} is a new standard of data communication format. This is the Ember.js default adapter.
+
+\section{Future work}

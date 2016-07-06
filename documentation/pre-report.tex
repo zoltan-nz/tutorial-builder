@@ -3,11 +3,7 @@
 %% $Date: 2016/06/10 03:41:54 $
 %% $Author: kevin $
 
-\documentclass[11pt
-              , a4paper
-              , twoside
-              , openright
-              ]{report}
+\documentclass[11pt, a4paper, twoside, openright]{report}
 
 
 \usepackage{float} % lets you have non-floating floats
@@ -48,9 +44,9 @@ Tutorial Builder \\
 
 \begin{abstract}
 
-Presenting a computer programming problem or solution with a high-quality video is time consuming and it is not easy to update.
+  Presenting a computer programming problem or solution with a high-quality video is time-consuming and it is not easy to update.
 
-Technical content producers are struggle to find an efficient and interactive way to show their work.
+  Technical content producers are struggling to find an efficient and interactive way to show their work.
 
 This research introduces a tool that can be used for creating an interactive tutorial.
 
@@ -110,7 +106,7 @@ Furthermore, the user can try out and can see the result also, so immediately ca
 
 Content creator, open source project maintainer, teacher.
 
-Their motivation is to present a technical problem and the solution clearly and in an easy-to-understand way. The best option showing a demo, what happens if we insert the suggested code, how easy to use it. Most of the times a presentation involves more steps. For example we would like to show a starting state, maybe a few lines of code which we are able to simplify, so in this case the first step is showing the problem and after we show step by step how we solve that.
+Their motivation is to present a technical problem and the solution clearly and in an easy-to-understand way. The best option showing a demo, what happens if we insert the suggested code, how easy to use it. Most of the times a presentation involves more steps. For example, we would like to show a starting state, maybe a few lines of code which we are able to simplify, so in this case, the first step is showing the problem and after we show step by step how we solve that.
 
 \subsection{Secondary persona}
 
@@ -120,7 +116,7 @@ They would like to play, stop, control the presentation. Control the flow, going
 
 They would like to try out the solution, for example how the final state changes if they modify the code.
 
-\section{The Solution}
+\section{The solution}
 
 I develop a prototype web app, where the content producer can create a simple step by step tutorial, and the content consumer can "watch" this tutorial and can interact with it.
 
@@ -291,7 +287,7 @@ Learning and teaching JavaScript, HTML and CSS is important. My tool focuses on 
 
 Building a frontend heavy application, with a dynamic, user-friendly interface is more common nowadays. In the last few years JavaScript based frontend frameworks became a matured, production ready tools. Server side technologies, like database management and time and resource heavy processes are separated from the user focused, design driven view layer, which is developed with usage of frontend frameworks.
 
-The most popular tools are Angular.js, React.js and Ember.js. In my project I use Ember.js. It is an "opinionated" framework. Opinionet, convention over configuration driven framework means, that developers should follow specific conventions, instead of freely using the tool. A more strict environment helps to adapt the best practices and speed up the development process also.
+The most popular tools are Angular.js, React.js and Ember.js. In my project I use Ember.js. It is an "opinionated" framework. Opinionated, convention over configuration driven framework means, that developers should follow specific conventions, instead of freely using the tool. A more strict environment helps to adapt the best practices and speed up the development process also.
 
 Certainly, we still have to store data and information, so we cannot live without backend and server technology. Luckily there are already cloud-based tools for managing databases. I use Firebase, which is a service provided by Google. Firebase is a cloud-based database, document-store solution and easy to integrate with Ember.js.
 
@@ -302,19 +298,19 @@ Additionally, I build a traditional backend server application also to support d
 
 Following the most modern standard of web applications, I separate the user faced frontend development and the data store, backend development.
 
-The user face frontend application uses Ember.js frontend framework. The primer data store is Firebase cloud based database, however I already created a Ruby on Rails application which is running when the application is in development mode.
+The user face frontend application uses Ember.js frontend framework. The primer data store is Firebase cloud-based database, however I already created a Ruby on Rails application which is running when the application is in development mode.
 
 Ember.js development requires Node.js on the development machine to run the development environment. This development environment helps to run and modify frontend code quickly and it generates the final, deployable production code also. The production version of the application is only a static website. It means, there is one index.html, two JavaScript files and two CSS files.
 
 \section{Frontend features}
 
-The look and feel of the application will follow the standard Bootstrap style. Bootstrap is added to the project. I uses SaSS version of the Bootstrap, so I can customize it with the modification of the SaSS variables. SaSS is a modern CSS development environment, helps to programmatically modify the CSS.
+The look and feel of the application will follow the standard Bootstrap style. Bootstrap is added to the project. I use SaSS version of the Bootstrap, so I can customize it with the modification of the SaSS variables. SaSS is a modern CSS development environment, helps to programmatically modify the CSS.
 
 The home page of the application is only a placeholder. I added a navigation bar with the following links: Home, Sandbox, Tutorials, Admin.
 
 I implemented a breadcrumb bar also, which helps in navigation.
 
-I created first a Sandbox area, where I experiment with the CodeMirror code editor and an IFrame, which shows the preview. This Sandbox page contains the editor. When the source code is updated, the preview page automatically shows the generated website. This features uses Ember.js default two-way bindings capability.
+I created first a Sandbox area, where I experiment with the CodeMirror code editor and an IFrame, which shows the preview. This Sandbox page contains the editor. When the source code is updated, the preview page automatically shows the generated website. This feature uses Ember.js default two-way bindings capability.
 
 Database management is already implemented. The main adapter is the Firebase adapter, which automatically update data to the Firebase server. Firebase is a real time database. The limited, free to use version is enough for experimenting and for demo.
 
@@ -350,7 +346,7 @@ Previously listed requirements, the followings are already implemented. \\
 
 \section{Future work}
 
-In the following four months I will focus for the implementation of the rest of the features. Additionally, it is important to evaluate the prototype, so I would like to use the tutorial builder on a public website and collecting feedback from the users. \\
+In the following four months I will focus on the implementation of the rest of the features. Additionally, it is important to evaluate the prototype, so I would like to use the tutorial builder on a public website and collecting feedback from the users. \\
 
 \noindent Requirements from the teacher perspective:
 \begin{itemize}[noitemsep]

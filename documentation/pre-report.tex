@@ -50,7 +50,7 @@ Tutorial Builder \\
 
 This research introduces a tool that can be used for creating an interactive tutorial.
 
-This tool shows programming code snippets in web based code editor so the content creator can build a playable step by step "movie" with it.
+Furthermore this tool shows programming code snippets in web based code editor so the content creator can build a playable step by step "movie" with it.
 
 \end{abstract}
 
@@ -68,11 +68,11 @@ This tool shows programming code snippets in web based code editor so the conten
 
 \chapter{Introduction}
 
-This project is about building an online publishing tool prototype, using code editors and step by step instructions to present programming challenges or solutions for a computer science problem.
+This project is about building an online publishing tool prototype, using code editors and step by step instructions to present programming challenges and solutions for a computer science problem.
 
 The prototype has two parts, an administration area, where the content creator can build a tutorial, and a player tool, where the recorded steps would be presented. This player should be embeddable in any blog post or website.
 
-The primary target user is the creator, who composes a new tutorial. The creator can be a teacher, or an open source project owner, who would like to introduce his tool or code.
+The primary target user is the creator, who composes a new tutorial. The creator can be a teacher, or an open source project owner, who would like to introduce their tool or code.
 
 The secondary user is the consumer, who wants to learn or know more about a problem or a coding solution.
 
@@ -80,25 +80,25 @@ The secondary user is the consumer, who wants to learn or know more about a prob
 
 We all have the unstoppable desire to learn. We are keen to know more about the world around us, about our hobby and our profession. In software development, in computer science, the knowledge is essential, it is the key to succeeding. Reading, studying, sharing. An infinite loop of collecting and adapting new practices.
 
-In information technology, especially in programming languages, writing blog posts, creating static, step by step tutorials are a popular way to share or learn something new. Producing and sharing the content is easier nowadays, but still required more effort from the creator, when they want to deliver an easy to understand high-quality tutorials.
+In information technology, especially in programming languages, writing blog posts, creating static, step by step tutorials are a popular way to share or learn something new. Producing and sharing the content is easier nowadays, but still requires more effort from the creator, when they want to deliver an easy to understand high-quality tutorials.
 
-Creating interactive tutorials are appealing, but the production cost is much higher. Recording a video tutorial or especially updating it is time-consuming and involves more effort from the creator.
+Creating interactive tutorials are appealing, but the production cost is much higher. Recording a video tutorial or especially updating it is time-consuming, and it involves more effort from the creator.
 
-I think an ideal solution would be a healthy mix of static and dynamic contents. Where the learner can read instructions but meanwhile can watch the steps in a code editor, in a more realistic environment.
+I think an ideal solution would be a healthy mix of static and dynamic contents, where the learners can read instructions but meanwhile they can watch the steps in a code editor, in a more realistic environment.
 
 \chapter{The problem and the solution}
 
 \section{The problem}
 
-When a developer, teacher or hobbyist would like to present a computer programming problem or solution, most of the times they record a video and publish it on YouTube. Sometimes the easiest way to record a video of a conference/meetup presentation or a live coding session. However recording and editing a high-quality video is time-consuming and less flexible. It is hard to update.
+When a developer, teacher or hobbyist would like to present a computer programming problem or solution, most of the times they record a video and publish it on YouTube. Sometimes the easiest way to record a video of a conference/meetup presentation or a live coding session. However recording and editing a high-quality video is time-consuming and less flexible. It is also hard to update.
 
-Other problem with showing tutorials with a simple video, that the audience cannot try it out, they have to configure their computer and environment to play with the presented solution.
+Other problem with showing tutorials with a simple video, that the audience cannot give it a try, they have to configure their computer and environment to play with the presented solution.
 
-Most of the cases we would like to show instructions and code snippets, mainly text-based contents. It is preferred to show code snippets in a more realistic environment, in a code editor. So using the online code editor, with a pre-scripted way to play our presentation, where the user can step back and forward and can modify or play with the code is more interactive, involving and helps to understand a problem more clearly.
+Most of the cases we would like to show instructions and code snippets, mainly text-based contents. It is preferred to show code snippets in a more realistic environment, such as in a code editor. Therefore using the online code editor with a pre-scripted way to play the presentation, where the user can navigate back and forth and can modify or play with the code is more interactive. It involves everyone and helps to understand a problem clearly.
 
 Additionally, it is much easier to maintain, upgrade or fix for the content creator.
 
-Furthermore, the user can try out and can see the result also, so immediately can practice the new information.
+Furthermore, the user is able to experience it and can see the result, so the new information can be put into practice immediately.
 
 \section{Personas and their goals}
 
@@ -106,15 +106,15 @@ Furthermore, the user can try out and can see the result also, so immediately ca
 
 Content creator, open source project maintainer, teacher.
 
-Their motivation is to present a technical problem and the solution clearly and in an easy-to-understand way. The best option showing a demo, what happens if we insert the suggested code, how easy to use it. Most of the times a presentation involves more steps. For example, we would like to show a starting state, maybe a few lines of code which we are able to simplify, so in this case, the first step is showing the problem and after we show step by step how we solve that.
+Their motivation is to present a technical problem and the solution in a clear and an easy-to-understand way. The best option is to show a demo, what happens when we insert the suggested code, how easy it is to use. Most of the times a presentation involves more steps. For example, we would like to show a starting state, maybe a few lines of code which we are able to simplify, so in this case, the first step is to show the problem and after we show step by step how we solve that.
 
 \subsection{Secondary persona}
 
 The consumer, who watch the presentation, who reads the tutorial and who wants to learn more about the actual problem.
 
-They would like to play, stop, control the presentation. Control the flow, going forward or stepping back.
+They would like to play, stop, and control the presentation. Control the flow, going forward or stepping back.
 
-They would like to try out the solution, for example how the final state changes if they modify the code.
+They would like to try the solution, for example how the final state changes when they modify the code.
 
 \section{The solution}
 
@@ -138,18 +138,18 @@ Requirements are separated in three different groups.\\
 \item A step could be four different type:
 \begin{itemize}[noitemsep]
 \item Instruction type is a text content.
-\item Html type, which adding content to the html editor box.
-\item Css type, which adding content to the css editor box.
-\item JavaScript type, which adding content to the javascript editor box.
-\item Teacher can modify the sort of the steps with reorganizing with drag and drop.
+\item Html type, which adds content to the html editor box.
+\item Css type, which adds content to the css editor box.
+\item JavaScript type, which adds content to the javascript editor box.
 \end{itemize}
+\item Teacher can modify the sort of the steps with reorganizing with drag and drop.
 \end{itemize}
 
 \noindent Requirements from the student perspective:
 \begin{itemize}[noitemsep]
 \item Student can see a list of tutorials.
 \item Student can click on a tutorial and can see the steps.
-\item Steps are played in sort.
+\item Steps are presented in order.
 \item Student can "play" and "watch" the steps.
 \item Student can "pause" and step "backward".
 \end{itemize}
@@ -157,7 +157,7 @@ Requirements are separated in three different groups.\\
 \noindent User interface requirements:
 \begin{itemize}[noitemsep]
 \item The tutorial screen has five area:
-\item Instruction area
+\item Instruction area.
 \item Html code editor textarea.
 \item Css code editor textarea.
 \item Javascript code editor textarea.
@@ -165,35 +165,35 @@ Requirements are separated in three different groups.\\
 \end{itemize}
 
 \noindent The main website has two main section:
-\begin{itemize}
+\begin{itemize}[noitemsep]
 \item Admin page where Teacher can edit tutorials.
 \item Tutorials page where Students can select and watch tutorials.
 \end{itemize}
 
 \chapter{Background and Related Work}
 
-During the development and research work, I found a few related interesting projects. These are similar or partly I can use them.
+During the development and research work, I found a few related interesting projects. These are similar or I can use them partly.
 
 \section{CodeMirror Movie}
 
-This project is interesting, because I found it, when I checked the most popular web-based code editor tool, CodeMirror website. The creator of the CodeMirror wanted to present his tool with a realistic way, so he created CodeMirror Movie. \cite{cm-movie}
+I found this project when I checked the most popular web-based code editor tool, CodeMirror website. The creator of the CodeMirror wanted to present their tool with a realistic way, so CodeMirror Movie was born. \cite{cm-movie}
 
-This solution highly coupled with CodeMirror, it is like an add-on, so it is possible to attach any CodeMirror implementation. (More about CodeMirror in the next section.)
+This solution highly coupled with CodeMirror, it is similar to an add-on, so it is possible to attach any CodeMirror implementation. (More about CodeMirror in the next section.)
 
-Adding CodeMirror Movie to our project is quite straightforward. The open source repository provides a CSS and a JS file, which has to add into our page.
+Adding CodeMirror Movie to our project is straightforward because the open source repository provides a CSS and a JS file, so they can be added to any page.
 
-This tool is mainly target web-developers, who can add code and scripts to their websites.
+This tool mainly targets web-developers, so with the help of this tool they can add code and scripts to their websites.
 
 Editing "the movie" script is manual. There is a simple syntax which control the presentation steps and this script should be added to the textarea which will be in the code editor.
 
-We clearly see, that it is a very effective way to build a presentation, however it requires real development skills.\\
+We clearly see that it is a very effective way to build a presentation, however it requires real development skills.\\
 
 \noindent Pros:
 \begin{itemize}[noitemsep]
 \item simple, lightweight implementation
 \item easy to add your project if you use CodeMirror and you are a developer
 \item simple script language to manage the presentation
-\item user can use the code editor to try out the presented solution
+\item user can use the code editor to try the presented solution
 \end{itemize}
 Cons:
 \begin{itemize}[noitemsep]
@@ -236,18 +236,18 @@ I choose CodeMirror, because it has already Ember.js support. Thanks for the ivy
 \item Ember.js Addon: none
 \end{itemize}
 
-\section{Reviewing of code sharing websites}
+\section{Reviewing code sharing websites}
 
-We can use code editor and sharing platforms also when we want to demo a small feature or describe a problem. These websites are a combination of code editors and an iframe where we can see the preview of the code snippets.
+We can use code editor and sharing platforms also when we want to demo a small feature or describe a problem. These websites are combinations of code editors and an iframe where we can see the preview of the code snippets.
 
-Common feature to split the screen and providing different windows for editing html, css and javascript separately.
+One of the common features is splitting the screen and providing different windows for editing html, css and javascript separately.
 
 User can save the edited content also. Most of them can be embed in a blog post or in other website. \\
 
 \noindent Most important findings:
 \begin{itemize}[noitemsep]
 \item All use Code Mirror as code editor
-\item All of them separate the css, html and javascript editing in different screens, but they merge to one file and preview this merged html file in an iframe.
+\item All of them separate the css, html and javascript editing in different screens, but they merge into one file, and preview of this merged html file is possible in an iframe.
 \item Saving the different type of code (css, javascript, html) separately.
 \end{itemize}
 
@@ -285,9 +285,9 @@ One of the most popular programming languages in web development is JavaScript. 
 
 Learning and teaching JavaScript, HTML and CSS is important. My tool focuses on this three main building blocks of the web.
 
-Building a frontend heavy application, with a dynamic, user-friendly interface is more common nowadays. In the last few years JavaScript based frontend frameworks became a matured, production ready tools. Server side technologies, like database management and time and resource heavy processes are separated from the user focused, design driven view layer, which is developed with usage of frontend frameworks.
+Building a frontend heavy application, with a dynamic, user-friendly interface is more common nowadays. In the last few years JavaScript based frontend frameworks became mature, production ready tools. Server side technologies, like database management and time and resource heavy processes are separated from the user focused, design driven view layer, which is developed with usage of frontend frameworks.
 
-The most popular tools are Angular.js, React.js and Ember.js. In my project I use Ember.js. It is an "opinionated" framework. Opinionated, convention over configuration driven framework means, that developers should follow specific conventions, instead of freely using the tool. A more strict environment helps to adapt the best practices and speed up the development process also.
+The most popular tools are Angular.js, React.js and Ember.js. In my project I use Ember.js. It is an "opinionated" framework. Opinionated, convention over configuration driven framework means that developers should follow specific conventions, instead of using a tool freely. A more strict environment helps to adopt best practices and speed up the development process.
 
 Certainly, we still have to store data and information, so we cannot live without backend and server technology. Luckily there are already cloud-based tools for managing databases. I use Firebase, which is a service provided by Google. Firebase is a cloud-based database, document-store solution and easy to integrate with Ember.js.
 
@@ -300,7 +300,11 @@ Following the most modern standard of web applications, I separate the user face
 
 The user face frontend application uses Ember.js frontend framework. The primer data store is Firebase cloud-based database, however I already created a Ruby on Rails application which is running when the application is in development mode.
 
-Ember.js development requires Node.js on the development machine to run the development environment. This development environment helps to run and modify frontend code quickly and it generates the final, deployable production code also. The production version of the application is only a static website. It means, there is one index.html, two JavaScript files and two CSS files.
+Ember.js development requires Node.js on the development machine to run the development environment. This development environment helps to run and modify frontend code quickly, and it generates the final, deployable production code also. The production version of the application is only a static website. It means, there is one index.html, two JavaScript files and two CSS files.
+
+\section{Source control management}
+
+I have been using GitHub for managing source code and tracking code changes. Link to repository: \url{https://github.com/zoltan-nz/tutorial-builder}
 
 \section{Frontend features}
 
@@ -310,11 +314,15 @@ The home page of the application is only a placeholder. I added a navigation bar
 
 I implemented a breadcrumb bar also, which helps in navigation.
 
-I created first a Sandbox area, where I experiment with the CodeMirror code editor and an IFrame, which shows the preview. This Sandbox page contains the editor. When the source code is updated, the preview page automatically shows the generated website. This feature uses Ember.js default two-way bindings capability.
+First, I created a Sandbox area, where I experiment with the CodeMirror code editor and an iFrame, which shows the preview. This Sandbox page contains the editor. When the source code is updated, the preview page automatically shows the generated website. This feature uses Ember.js default two-way bindings capability.
 
 Database management is already implemented. The main adapter is the Firebase adapter, which automatically update data to the Firebase server. Firebase is a real time database. The limited, free to use version is enough for experimenting and for demo.
 
 The secondary adapter is a JSONApi Adapter. JSON Api \cite{jsonapi} is a new standard of data communication format. This is the Ember.js default adapter.
+
+\section{Static website hosting}
+
+I have been using surge.sh \cite{surge} for static website hosting, so the actual state of the prototype is updated there regularly. Link to the live version: \url{http://tutorial-builder.surge.sh}
 
 \section{Implemented requirements}
 
@@ -339,31 +347,31 @@ Previously listed requirements, the followings are already implemented. \\
 \end{itemize}
 
 \noindent The main website has two main section:
-\begin{itemize}
+\begin{itemize}[noitemsep]
 \item \ding{51} Admin page where Teacher can edit tutorials.
 \item \ding{51} Tutorials page where Students can select and watch tutorials.
 \end{itemize}
 
 \section{Future work}
 
-In the following four months I will focus on the implementation of the rest of the features. Additionally, it is important to evaluate the prototype, so I would like to use the tutorial builder on a public website and collecting feedback from the users. \\
+In the following four months I will focus on the implementation of the rest of the features. Additionally, it is important to validate the prototype, so I would like to use the tutorial builder on a public website and collecting feedback from test users. \\
 
 \noindent Requirements from the teacher perspective:
 \begin{itemize}[noitemsep]
-\item A step could be four different type:
+\item A step can be four different types:
 \begin{itemize}[noitemsep]
 \item Instruction type is a text content.
-\item Html type, which adding content to the html editor box.
-\item Css type, which adding content to the css editor box.
-\item JavaScript type, which adding content to the javascript editor box.
-\item Teacher can modify the sort of the steps with reorganizing with drag and drop.
+\item Html type, which adds content to the html editor box.
+\item Css type, which adds content to the css editor box.
+\item JavaScript type, which adds content to the javascript editor box.
 \end{itemize}
+\item Teacher can modify the sort of the steps with reorganizing with drag and drop.
 \end{itemize}
 
 \noindent Requirements from the student perspective:
 \begin{itemize}[noitemsep]
 \item Student can click on a tutorial and can see the steps.
-\item Steps are played in sort.
+\item Steps are presented in order.
 \item Student can "play" and "watch" the steps.
 \item Student can "pause" and step "backward".
 \end{itemize}
@@ -387,15 +395,16 @@ In the following four months I will focus on the implementation of the rest of t
 \begin{thebibliography}{9}
 
 \bibitem{tiobe}
-Tiobe.com
-\url{http://www.tiobe.com/tiobe_index}
+Tiobe.com - \url{http://www.tiobe.com/tiobe_index}
 
 \bibitem{cm-movie}
-CodeMirror Movie
-\url{https://github.com/sergeche/codemirror-movie}
+CodeMirror Movie - \url{https://github.com/sergeche/codemirror-movie}
 
 \bibitem{jsonapi}
-\url{http://jsonapi.org}
+JSON Api - \url{http://jsonapi.org}
+
+\bibitem{surge}
+Surge.sh Static Website Hosting Service - \url{http://surge.sh}
 
 \end{thebibliography}
 

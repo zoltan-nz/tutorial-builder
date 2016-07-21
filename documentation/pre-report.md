@@ -107,65 +107,46 @@ tutorial and can interact with it.
 There are two different users:
 
 -   content producer, for example a teacher
-
 -   content consumer, for instance a student
 
 Requirements
 ------------
 
-Requirements are separated in three different groups.\
-Requirements from the teacher perspective:
+Requirements are separated in three different groups. 
+
+**Requirements from the teacher perspective:**
 
 -   Teacher can navigate to Admin page.
-
 -   Teacher can create a new tutorial.
-
 -   Teacher can add steps to the tutorial.
-
 -   A step could be four different type:
-
     -   Instruction type is a text content.
-
     -   Html type, which adds content to the html editor box.
-
     -   Css type, which adds content to the css editor box.
-
-    -   JavaScript type, which adds content to the javascript
-        editor box.
-
+    -   JavaScript type, which adds content to the javascript editor box.
 -   Teacher can modify the sort of the steps with reorganizing with drag
     and drop.
 
-Requirements from the student perspective:
+**Requirements from the student perspective:**
 
 -   Student can see a list of tutorials.
-
 -   Student can click on a tutorial and can see the steps.
-
 -   Steps are presented in order.
-
 -   Student can “play” and “watch” the steps.
-
 -   Student can “pause” and step “backward”.
 
-User interface requirements:
+**User interface requirements:**
 
 -   The tutorial screen has five area:
-
 -   Instruction area.
-
 -   Html code editor textarea.
-
 -   Css code editor textarea.
-
 -   Javascript code editor textarea.
-
 -   Html preview textarea.
 
-The main website has two main section:
+**The main website has two main section:**
 
 -   Admin page where Teacher can edit tutorials.
-
 -   Tutorials page where Students can select and watch tutorials.
 
 Background and Related Work
@@ -198,22 +179,19 @@ control the presentation steps and this script should be added to the
 textarea which will be in the code editor.
 
 We clearly see that it is a very effective way to build a presentation,
-however it requires real development skills.\
+however it requires real development skills.
+
 Pros:
 
 -   simple, lightweight implementation
-
 -   easy to add your project if you use CodeMirror and you are a
     developer
-
 -   simple script language to manage the presentation
-
 -   user can use the code editor to try the presented solution
 
 Cons:
 
 -   mainly for developers only
-
 -   highly coupled with CodeMirror
 
 Comparison of online code editors
@@ -232,36 +210,28 @@ autocompletion, syntax highlighting, controlling with shortcuts.
 
 I choose CodeMirror, because it has already Ember.js support. Thanks for
 the ivy-codemirror Ember addon, it can be added to any Ember.js project
-with the installation of the addon.\
+with the installation of the addon.
+
 CodeMirror
 
--   Github link: <https://github.com/codemirror/CodeMirror>
-
--   Website: <http://codemirror.net/>
-
+-   Github link: https://github.com/codemirror/CodeMirror
+-   Website: http://codemirror.net/
 -   Popularity (GitHub Star): 9396
-
 -   Ember.js Addon:
-    <https://www.emberobserver.com/addons/ivy-codemirror>\
+    https://www.emberobserver.com/addons/ivy-codemirror
 
 Ace Editor
 
--   Github link: <https://github.com/ajaxorg/ace>
-
--   Website: <https://ace.c9.io>
-
+-   Github link: https://github.com/ajaxorg/ace
+-   Website: https://ace.c9.io
 -   Popularity (GitHub Star): 12950
-
 -   Ember.js Addon: none
 
 Monaco
 
--   Github link: <https://github.com/Microsoft/monaco-editor>
-
--   Website: <https://microsoft.github.io/monaco-editor/>
-
+-   Github link: https://github.com/Microsoft/monaco-editor
+-   Website: https://microsoft.github.io/monaco-editor
 -   Popularity (GitHub Star): 2322
-
 -   Ember.js Addon: none
 
 Reviewing code sharing websites
@@ -276,39 +246,31 @@ One of the common features is splitting the screen and providing
 different windows for editing html, css and javascript separately.
 
 User can save the edited content also. Most of them can be embed in a
-blog post or in other website.\
+blog post or in other website.
+
 Most important findings:
 
 -   All use Code Mirror as code editor
-
 -   All of them separate the css, html and javascript editing in
     different screens, but they merge into one file, and preview of this
     merged html file is possible in an iframe.
-
 -   Saving the different type of code (css, javascript, html)
     separately.
+ 
+ 
+|| Code Pen | JSBin | JSFiddle | Ember Twiddle |
+|---|---|---|---|---|
+|Link to open source project|not open source|\[a\]|not open source|\[b\]|
+|Website|\[c\]|\[d\]|\[e\]|\[f\]|
+|Code Editor|Code Mirror|Code Mirror|Code Mirror|Code Mirror|
+|Support embedding|yes|yes|yes|yes|
 
-                                Code Pen          JSBin         JSFiddle          Ember Twiddle
-  ----------------------------- ----------------- ------------- ----------------- ---------------
-  Link to open source project   not open source   \[a\]         not open source   \[b\]
-  Website                       \[c\]             \[d\]         \[e\]             \[f\]
-  Code Editor                   Code Mirror       Code Mirror   Code Mirror       Code Mirror
-  Support embedding             yes               yes           yes               yes
-
-\
 Links:
-
--   a: <https://github.com/jsbin/jsbin>\
-
--   b: <https://github.com/ember-cli/ember-twiddle>\
-
--   c: <http://codepen.io>\
-
--   d: <http://jsbin.com>\
-
--   e: <https://jsfiddle.net/>\
-
--   f: <https://ember-twiddle.com/>\
+- a: https://github.com/jsbin/jsbin
+- b: https://github.com/ember-cli/ember-twiddle
+- c: http://codepen.io
+- d: http://jsbin.com
+- e: https://jsfiddle.net
 
 Progress
 ========
@@ -416,28 +378,25 @@ Implemented requirements
 ------------------------
 
 Previously listed requirements, the followings are already implemented.\
-Requirements from the teacher perspective:
+
+**Requirements from the teacher perspective:**
 
 -   Teacher can navigate to Admin page.
-
 -   Teacher can create a new tutorial.
-
 -   Teacher can add steps to the tutorial.
 
-Requirements from the student perspective:
+**Requirements from the student perspective:**
 
 -   Student can see a list of tutorials.
 
-User interface requirements:
+**User interface requirements:**
 
 -   Html code editor textarea.
-
 -   Html preview textarea.
 
-The main website has two main section:
+**The main website has two main section:**
 
 -   Admin page where Teacher can edit tutorials.
-
 -   Tutorials page where Students can select and watch tutorials.
 
 Future work
@@ -446,44 +405,34 @@ Future work
 In the following four months I will focus on the implementation of the
 rest of the features. Additionally, it is important to validate the
 prototype, so I would like to use the tutorial builder on a public
-website and collecting feedback from test users.\
-Requirements from the teacher perspective:
+website and collecting feedback from test users.
+
+**Requirements from the teacher perspective:**
 
 -   A step can be four different types:
-
     -   Instruction type is a text content.
-
     -   Html type, which adds content to the html editor box.
-
     -   Css type, which adds content to the css editor box.
-
-    -   JavaScript type, which adds content to the javascript
-        editor box.
-
+    -   JavaScript type, which adds content to the javascript editor box.
 -   Teacher can modify the sort of the steps with reorganizing with drag
     and drop.
 
-Requirements from the student perspective:
+**Requirements from the student perspective:**
 
 -   Student can click on a tutorial and can see the steps.
-
 -   Steps are presented in order.
-
 -   Student can “play” and “watch” the steps.
-
 -   Student can “pause” and step “backward”.
 
-User interface requirements:
+**User interface requirements:**
 
 -   The tutorial screen has five area:
-
 -   Instruction area
-
 -   Css code editor textarea.
-
 -   Javascript code editor textarea.
 
-<span>9</span>
+Reference
+---------
 
 Tiobe.com - <http://www.tiobe.com/tiobe_index>
 

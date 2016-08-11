@@ -11,19 +11,19 @@ Add Bootstrap
 Add CodeMirror
 
     ember install ivy-codemirror
-    
+
 CodeMirror configuration challenge
 * For `htmlmixed` need `xml`, `javascript`, `css`
-* For Solarized theme should use `solarized dark` or `solarized light` in the code. 
+* For Solarized theme should use `solarized dark` or `solarized light` in the code.
 
-    
+
     //ember-cli-build.js
     codemirror: {
       modes: ['xml', 'javascript', 'css', 'handlebars', 'markdown', 'htmlmixed'],
       keyMaps: ['vim', 'emacs', 'sublime'],
       themes: ['solarized']
     }
-    
+
 Using CodeMirror component, the documentation is missleading.
 
 This is working:
@@ -39,7 +39,7 @@ Add extra style rules.
 
 Iframe settings.
 
-Sources: 
+Sources:
 * [CodeMirror](https://codemirror.net/index.html)
 
 Deployment on surge.sh
@@ -88,7 +88,7 @@ Route structure:
 
 
 
-## Tutorial play-back 
+## Tutorial play-back
 
 # Other challenges
 
@@ -97,7 +97,7 @@ Route structure:
 Installing the component:
 
     ember install ember-crumbly
-    
+
 Add this line to the application template:
 
     {{bread-crumbs tagName="ol" outputStyle="bootstrap" linkable=true}}
@@ -132,7 +132,7 @@ Finally, I created a rails api server. Repo: https://github.com/zoltan-nz/tutori
 ### Database update is too fast and high frequency
 
 Updating the database after each keystroke is overkill and not efficient. Database is still in lock phase, so have to setup a latency updating mechanism.
-I did it with using Ember run debounce method. 
+I did it with using Ember run debounce method.
 
 * I tried to create an addon for adding Emmet support for CodeMirror, I realized, that CodeMirror package updated and changed significantly.
 The addon still not working properly.
@@ -155,3 +155,11 @@ CodePen merges html, css and js into one html file.
 Babel REPL: https://github.com/babel/babel.github.io/blob/master/scripts/repl.js
 
 Codecademy and React: https://www.infoq.com/articles/reactjs-codecademy?utm_source=hacker%2520news&utm_medium=link&utm_campaign=react_js_article
+
+# Step builder
+
+- User creator selects a tutorial, a lesson.
+- On the lesson page, the user can add steps.
+- The list of the steps on the left side panel.
+- A step has to have a name. Default name is the index number and the type.
+- On the other part of the screen are: step type selector, content editor text box (code editor), the preview code editor with the content of previous steps and the html page preview page 

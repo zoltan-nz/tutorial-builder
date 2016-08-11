@@ -377,7 +377,7 @@ live version: <http://tutorial-builder.surge.sh>
 Implemented requirements
 ------------------------
 
-Previously listed requirements, the followings are already implemented.\
+Previously listed requirements, the followings are already implemented.
 
 **Requirements from the teacher perspective:**
 

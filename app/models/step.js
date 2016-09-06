@@ -5,8 +5,9 @@ import { belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
   name: attr(),
-  sort: attr('integer'),
-  actionContent: attr(),
-  // actionType: belongsTo('action-type'),
+  sort: attr('number'),
+  content: attr(),
+  contentType: belongsTo('content-type'),
   lesson: belongsTo('lesson')
+
 });

@@ -163,3 +163,20 @@ Codecademy and React: https://www.infoq.com/articles/reactjs-codecademy?utm_sour
 - The list of the steps on the left side panel.
 - A step has to have a name. Default name is the index number and the type.
 - On the other part of the screen are: step type selector, content editor text box (code editor), the preview code editor with the content of previous steps and the html page preview page 
+
+# Improvements
+
+- Add eslint code linter, instead of the default jshint.
+Instructions: https://github.com/ember-cli/ember-cli-eslint
+
+- Renaming Admin to Dashboard
+
+- Experimenting with defaultValue, user can create new records without adding name to a tutorial or a lesson, it generates a simple name or title based on how many records are there already.
+
+- Content Type?
+
+# UX Concerns:
+
+- Need some default value when user create a new item, record?
+- Prepopulate the name field?
+- When new record created should redirect to the created page to drive the workflow.

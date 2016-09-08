@@ -11,8 +11,10 @@ export default Ember.Route.extend({
     createLesson(title) {
       const tutorial = this.controller.get('model');
 
-      this.store.createRecord('lesson', { tutorial }).save();
+      let newLesson = this.store.createRecord('lesson', { title, tutorial }).save();
       tutorial.save();
+
+      this.transitionTo('dashboard.tutorial.lesson', newLesson);
     }
   }
 });

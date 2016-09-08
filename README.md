@@ -140,7 +140,7 @@ And meanwhile I had other challenge, the update action isn't fired any more, so 
 
 This changes nicely explained in the addon documentation and basically follows the new frontend pattern: data down, actions up. Instead of the value change automatically, with "two-way" bindings, any change will fire an action which can manage this new changes. So I had to update the `updateSandboxSource` method in the controller.
 
-# Research topics
+### Research topics
 
 * Code editors, comparision
 
@@ -156,7 +156,7 @@ Babel REPL: https://github.com/babel/babel.github.io/blob/master/scripts/repl.js
 
 Codecademy and React: https://www.infoq.com/articles/reactjs-codecademy?utm_source=hacker%2520news&utm_medium=link&utm_campaign=react_js_article
 
-# Step builder
+### Step builder
 
 - User creator selects a tutorial, a lesson.
 - On the lesson page, the user can add steps.
@@ -164,7 +164,7 @@ Codecademy and React: https://www.infoq.com/articles/reactjs-codecademy?utm_sour
 - A step has to have a name. Default name is the index number and the type.
 - On the other part of the screen are: step type selector, content editor text box (code editor), the preview code editor with the content of previous steps and the html page preview page 
 
-# Improvements
+### Improvements
 
 - Add eslint code linter, instead of the default jshint.
 Instructions: https://github.com/ember-cli/ember-cli-eslint
@@ -175,8 +175,13 @@ Instructions: https://github.com/ember-cli/ember-cli-eslint
 
 - Content Type?
 
-# UX Concerns:
+### UX Concerns:
 
 - Need some default value when user create a new item, record?
 - Prepopulate the name field?
 - When new record created should redirect to the created page to drive the workflow.
+
+### Challenges during implementation of Step Builder
+
+- CodeMirror instance. The addon doesn't expose the CodeMirror API. Using the service, we can access to the instance of the CodeMirror and directly to the editor.
+- Reading the cursor position: watching the event `cursorActivity`, which can invoke a callback. In this case, using `bind` was an important, because we wanted to keep the context of the Ember project. (I should use an illustration for explaining this.)

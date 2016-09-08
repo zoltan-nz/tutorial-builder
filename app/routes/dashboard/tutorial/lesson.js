@@ -10,9 +10,8 @@ export default Ember.Route.extend({
 
     addNewStep() {
       let lesson = this.controller.get('model');
-      let newStep = this.store.createRecord('step', { name: 'New Step', lesson });
 
-      newStep.save();
+      let newStep = this.store.createRecord('step', { name: 'New Step', lesson }).save();
       lesson.save();
 
       this.transitionTo('dashboard.tutorial.lesson.step', newStep );

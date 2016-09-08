@@ -5,7 +5,9 @@ export default Ember.Route.extend({
   actions: {
 
     createTutorial(name) {
-      this.store.createRecord('tutorial', { name }).save();
+      let newTutorial = this.store.createRecord('tutorial', { name }).save();
+
+      this.transitionTo('dashboard.tutorial', newTutorial);
     }
   }
 });

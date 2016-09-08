@@ -1,13 +1,25 @@
-import Model from 'ember-data/model';
-import attr from 'ember-data/attr';
-import { belongsTo } from 'ember-data/relationships';
-// import { hasMany } from 'ember-data/relationships';
+import DS from 'ember-data';
+import Ember from 'ember';
+
+const { Model, attr, belongsTo } = DS;
 
 export default Model.extend({
+
   name: attr(),
-  sort: attr('number'),
-  content: attr(),
-  contentType: belongsTo('content-type'),
-  lesson: belongsTo('lesson')
+  lesson: belongsTo('lesson'),
+
+  // snippetType: attr(),
+  code: attr(),
+  // sort: attr('number'),
+
+  // line: attr('number'),
+  // char: attr('number'),
+
+  typeOptions: Ember.A([
+      'TEXT',
+      'HTML',
+      'CSS',
+      'JS'
+    ])
 
 });

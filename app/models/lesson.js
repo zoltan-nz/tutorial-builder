@@ -1,11 +1,21 @@
-import Model from 'ember-data/model';
-import attr from 'ember-data/attr';
-import { belongsTo, hasMany } from 'ember-data/relationships';
+import DS from 'ember-data';
+
+const { Model, attr, hasMany, belongsTo } = DS;
 
 export default Model.extend({
   title: attr(),
   sort: attr('number'),
   visited: attr('boolean'),
   steps: hasMany('step'),
-  tutorial: belongsTo('tutorial')
+  tutorial: belongsTo('tutorial'),
+
+  code: Ember.computed('steps.@each.code', function() {
+
+    let code = '';
+
+    let steps = this.get('steps');
+    steps.forEach(step => code = code + step.get('code'));
+
+    return code;
+  })
 });

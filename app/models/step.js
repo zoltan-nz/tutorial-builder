@@ -5,15 +5,15 @@ const { Model, attr, belongsTo } = DS;
 
 export default Model.extend({
 
-  name: attr(),
+  name: attr('string'),
   lesson: belongsTo('lesson'),
 
-  // snippetType: attr(),
-  code: attr(),
-  // sort: attr('number'),
+  type: attr('string'),
+  code: attr('string'),
+  sort: attr('number'),
 
-  // line: attr('number'),
-  // char: attr('number'),
+  line: attr('number'),
+  char: attr('number'),
 
   typeOptions: Ember.A([
       'TEXT',

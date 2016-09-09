@@ -4,12 +4,8 @@ export default Ember.Route.extend({
 
   actions: {
 
-    saveStep() {
-      this.controller.get('model').save();
+    saveStep(step) {
+      step.save();
     }
-  },
-
-  didTransition() {
-    console.log('yey');
   }
 });

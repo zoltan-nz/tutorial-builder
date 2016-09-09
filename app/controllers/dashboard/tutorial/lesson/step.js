@@ -11,6 +11,11 @@ export default Ember.Controller.extend({
   stepEditorId: 'step-editor',
   resultEditorId: 'result-editor',
 
+  stepEditor: computed('stepEditorId', 'model.code', function() {
+    const cm = this.get('codeMirror');
+    return cm._instances[this.get('stepEditorId')];
+  }),
+
   resultEditor: computed('resultEditorId', function() {
     const cm = this.get('codeMirror');
     return cm._instances[this.get('resultEditorId')];
@@ -37,9 +42,27 @@ export default Ember.Controller.extend({
     },
 
     updateContent(value) {
-      this.set('model.content', value);
+      this.set('model.code', value);
+    },
+
+    updateResult() {
+      let resultEditor = this.get('resultEditor');
     }
+  },
 
-  }
+  historySize: computed('stepEditor', 'model.code', function() {
+    const editor = this.get('stepEditor');
 
+    if (editor) {
+      return this.get('stepEditor').historySize();
+    }
+  }),
+
+  history: computed('stepEditor', 'model.code', function() {
+    const editor = this.get('stepEditor');
+
+    if (editor) {
+      return this.get('stepEditor').getHistory();
+    }
+  })
 })

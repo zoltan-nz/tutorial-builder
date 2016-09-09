@@ -27,6 +27,8 @@ Name: {{input value=model.name}}
   valueUpdated = (action 'updateContent')
 }}
 
+Undo/Redo: {{historySize.undo}}
+
 <h2>5. Insert. Select position with click</h2>
 
 {{ivy-codemirror
@@ -36,11 +38,11 @@ Name: {{input value=model.name}}
     mode         = 'htmlmixed'
     addModeClass = true
     theme        = 'solarized light')
-  value        = model.lesson.code
+  value = model.lesson.code
 }}
 
 Line: {{input value=model.line}} Char: {{input value=model.char}}
 
 <h2>6. Save</h2>
 
-<button {{action 'saveStep'}}>Save Step</button>
+<button {{action 'saveStep' model}}>Save Step</button>

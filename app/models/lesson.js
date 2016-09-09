@@ -13,7 +13,7 @@ export default Model.extend({
 
     let code = '';
 
-    let steps = this.get('steps');
+    let steps = this.get('steps').sortBy('sort');
     steps.forEach(step => code = code + step.get('code'));
 
     return code;

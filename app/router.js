@@ -7,9 +7,14 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function () {
+  this.route('builder', function() {
+    this.route('step', { path: '/:id' });
+  });
+
   this.route('sandboxes', function () {
     this.route('sandbox', { path: '/:sandbox_id' });
   });
+
   this.route('dashboard', { path: "/dashboard" }, function () {
     this.route('tutorial', { path: '/tutorial/:tutorial_id' }, function () {
       this.route('lesson', { path: '/lesson/:lesson_id' }, function () {

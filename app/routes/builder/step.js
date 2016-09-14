@@ -6,18 +6,31 @@ export default Ember.Route.extend({
     return this.store.findRecord('builder-step', params.id);
   },
 
-  setupController(model, controller) {
-    this._super(model, controller)
-  },
-
   actions: {
+
     didTransition() {
+
+      const builder = this.controller.get('model.builder');
+      builder.set('activeStep', this.controller.get('model.sort'));
+
       const editor = this.controller.get('builderEditor');
       if (!editor) return;
 
-      const code = this.controller.get('model.code');
-      if (!code) return;
-      editor.setValue(code);
+      const model = this.controller.get('model');
+
+      const code = model.get('codeFinalState');
+
+      if (!Ember.isEmpty(code)) {
+        editor.setValue(code);
+      }
+
+      editor.clearHistory();
+
+      const history = model.get('history');
+      if (!Ember.isEmpty(history)) {
+        editor.setHistory(history);
+      }
+
     }
   }
 

@@ -190,3 +190,6 @@ Instructions: https://github.com/ember-cli/ember-cli-eslint
 - I just create one page with a huge editor: BUILDER
 - There will be small text box, with a NEXT button
 - BUILDER-STEP model: code (getValue), description, history(getHistory)
+
+- Managing editor history state between steps -> saving the start state based on previous step, recording changes, saving the history, saving the final state
+- History data management with transform, serialization-deserialization when saving in database

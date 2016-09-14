@@ -1,6 +1,18 @@
-<h2>Step {{model.sort}}</h2>
+<h3>Step {{model.sort}}</h3>
 
-Comment: {{input value=model.comment}}
+<form>
+  <div class="form-group">
+    <label>Instructions:</label>
+    {{textarea value=model.comment class='form-control' placeholder='Write your instructions'}}
+  </div>
 
-<button {{action 'save'}} class="btn btn-success">Save</button>
-<button {{action 'saveAndNextStep'}} class='btn btn-info'>Save and Next</button>
+  <button {{action 'save'}} class="btn btn-success">Save</button>
+  <button {{action 'saveAndNextStep'}} class='btn btn-info'>Save and Next</button>
+</form>
+
+<code>
+  <p>History size: <span class="badge">{{historySize.undo}}</span></p>
+  <p>Is last step? <span class="badge">{{model.isLastStep}}</span></p>
+  <p>Is first step? <span class="badge">{{model.isFirstStep}}</span></p>
+  <p>Builder step size: <span class="badge">{{builder.stepSize}}</span></p>
+</code>

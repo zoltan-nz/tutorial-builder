@@ -6,6 +6,7 @@ export default Ember.Controller.extend({
 
   actions: {
 
+    // Update the preview window
     updateSource(source) {
       this.set('source', source);
     }

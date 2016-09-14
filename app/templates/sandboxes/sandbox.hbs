@@ -9,13 +9,15 @@
 
     {{if model.hasDirtyAttributes 'Not Saved' 'Saved'}}
 
-    {{ivy-codemirror options=(hash
+    {{ivy-codemirror
+      options=(hash
         lineNumbers  = true
+
         mode         = 'htmlmixed'
         addModeClass = true
         theme        = 'solarized light')
-        value        = model.source
-        valueUpdated = (action 'updateSandboxSource')
+      value        = model.source
+      valueUpdated = (action 'updateSandboxSource')
     }}
 
   </div>

@@ -1,43 +1,59 @@
-<h1>Builder</h1>
+<div class="well well-sm">
+<h3>The Builder</h3>
+
+  <p>Build your tutorial step by step.</p>
+  <ol>
+    <li>Change the code</li>
+    <li>Write instruction</li>
+    <li>Save</li>
+  </ol>
+
+</div>
 
 <div class="row">
   <div class="col-md-9">
 
-    {{ivy-codemirror
-      id='builder-editor'
-      options=(hash
-        lineNumbers  = true
-        mode         = 'htmlmixed'
-        addModeClass = true
-        theme        = 'solarized dark')
-      value        = source
-      valueUpdated = (action 'updateSource')
-    }}
+    <div class="well well-sm">
+
+      <h3>Code Editor</h3>
+
+      {{ivy-codemirror
+        id='builder-editor'
+        options=(hash
+          lineNumbers  = true
+          mode         = 'htmlmixed'
+          addModeClass = true
+          theme        = 'solarized dark')
+        value        = source
+        valueUpdated = (action 'updateSource')
+      }}
+    </div>
 
     <hr>
 
-    <div class="col-md-6">
-      {{preview-iframe srcdoc=source}}
-    </div>
+    <h3>Preview of the actual state</h3>
+
+    {{preview-iframe srcdoc=source}}
 
   </div>
 
   <div class="col-md-3">
+
+    <div class="well well-sm">
+      {{outlet}}
+    </div>
 
     <div class="list-group">
       {{#each model.builderSteps as |step|}}
         {{#link-to "builder.step" step class='list-group-item'}}
           <h4>Step {{step.sort}}</h4>
           <p class="list-group-item-text">
-            {{step.comment}}
-
-            <button {{action 'deleteStep' step}} class="btn btn-danger btn-xs pull-right">Delete this step</button>
+            {{step.comment}} <br>
+            <button {{action 'deleteStep' step}} class="btn btn-danger btn-xs">Delete this step</button>
           </p>
         {{/link-to}}
       {{/each}}
     </div>
-
-    {{outlet}}
   </div>
 
 </div>

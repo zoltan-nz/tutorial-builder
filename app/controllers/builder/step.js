@@ -1,6 +1,7 @@
 import Ember from "ember";
 import inject from 'ember-service/inject';
 import { schedule } from 'ember-runloop';
+import History from 'tutorial-builder/models/history';
 
 const BUILDER_EDITOR_ID = 'builder-editor';
 
@@ -14,8 +15,6 @@ export default Ember.Controller.extend({
   builderEditor: null,
 
   init() {
-    console.log('step controller initialized');
-
     schedule('afterRender', this, this.afterRender.bind(this))
   },
 
@@ -24,6 +23,7 @@ export default Ember.Controller.extend({
 
     // Attach to a global variable for debugging
     window.editor = this.get('builderEditor');
+    this.send('updateCodeInEditor');
   },
 
   history: Ember.computed('builderEditor', function() {
@@ -62,7 +62,16 @@ export default Ember.Controller.extend({
       }
 
       this.transitionToRoute('builder.step', builder.get('nextStep'));
+    },
+
+    back() {
+      this.get('builderEditor').undo();
+    },
+
+    forward() {
+      this.get('builderEditor').redo();
     }
+
 
   },
 
@@ -72,7 +81,9 @@ export default Ember.Controller.extend({
 
     model.set('code', builderEditor.getValue());
     model.set('codeFinalState', builderEditor.getValue());
-    model.set('history', builderEditor.getHistory());
+
+    if (!model.get('history')) { model.set('history', History.create())}
+    model.set('history.content', builderEditor.getHistory());
 
     model.save();
   }

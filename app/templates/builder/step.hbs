@@ -15,4 +15,23 @@
   <p>Is last step? <span class="badge">{{model.isLastStep}}</span></p>
   <p>Is first step? <span class="badge">{{model.isFirstStep}}</span></p>
   <p>Builder step size: <span class="badge">{{builder.stepSize}}</span></p>
+  <p>Active step: <span class="badge">{{builder.activeStep}}</span></p>
 </code>
+
+{{#ember-wormhole to="history-toolbar"}}
+
+  <div class="form-group">
+    <div class="btn-toolbar" role="toolbar">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default" {{action 'back'}}>&lt; Back</button>
+      </div>
+      <div class="btn-group" role="group">
+
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default" {{action 'forward'}}>Forward &gt;</button>
+      </div>
+    </div>
+  </div>
+
+{{/ember-wormhole}}

@@ -193,3 +193,6 @@ Instructions: https://github.com/ember-cli/ember-cli-eslint
 
 - Managing editor history state between steps -> saving the start state based on previous step, recording changes, saving the history, saving the final state
 - History data management with transform, serialization-deserialization when saving in database
+
+- History transform with Ember.ObjectProxy
+- Using Ember-wormhole for rendering controller toolbar on different place

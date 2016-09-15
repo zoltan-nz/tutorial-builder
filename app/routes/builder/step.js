@@ -13,6 +13,11 @@ export default Ember.Route.extend({
       const builder = this.controller.get('model.builder');
       builder.set('activeStep', this.controller.get('model.sort'));
 
+      this.send('updateCodeInEditor')
+    },
+
+    updateCodeInEditor() {
+
       const editor = this.controller.get('builderEditor');
       if (!editor) return;
 
@@ -28,10 +33,13 @@ export default Ember.Route.extend({
 
       const history = model.get('history');
       if (!Ember.isEmpty(history)) {
-        editor.setHistory(history);
+        editor.setHistory(history.get('content'));
       }
 
+
     }
+
+
   }
 
 });

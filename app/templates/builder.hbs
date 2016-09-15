@@ -1,5 +1,5 @@
 <div class="well well-sm">
-<h3>The Builder</h3>
+  <h3>The Builder</h3>
 
   <p>Build your tutorial step by step.</p>
   <ol>
@@ -16,7 +16,6 @@
     <div class="well well-sm">
 
       <h3>Code Editor</h3>
-
       {{ivy-codemirror
         id='builder-editor'
         options=(hash
@@ -27,14 +26,16 @@
         value        = source
         valueUpdated = (action 'updateSource')
       }}
+
+      <div id="history-toolbar" class="history-toolbar"></div>
+
+      <hr>
+
+      <h3>Preview of the actual state</h3>
+
+      {{preview-iframe srcdoc=source}}
+
     </div>
-
-    <hr>
-
-    <h3>Preview of the actual state</h3>
-
-    {{preview-iframe srcdoc=source}}
-
   </div>
 
   <div class="col-md-3">

@@ -7,9 +7,12 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function () {
+
   this.route('builder', function() {
     this.route('step', { path: '/:id' });
   });
+
+  this.route('player');
 
   this.route('sandboxes', function () {
     this.route('sandbox', { path: '/:sandbox_id' });

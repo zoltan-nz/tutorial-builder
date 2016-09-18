@@ -186,8 +186,8 @@ Instructions: https://github.com/ember-cli/ember-cli-eslint
 - CodeMirror instance. The addon doesn't expose the CodeMirror API. Using the service, we can access to the instance of the CodeMirror and directly to the editor.
 - Reading the cursor position: watching the event `cursorActivity`, which can invoke a callback. In this case, using `bind` was an important, because we wanted to keep the context of the Ember project. (I should use an illustration for explaining this.)
 - Digging deep in the CodeMirror implementation, I realized CodeMirror continuously save all the changes as a History. This history could be the key of the recording and replaying steps.
-- I simplify the user interface. I think, having a Tutorial > Lesson > Step structure is too deep for a prototype implementation and not so important.
-- I just create one page with a huge editor: BUILDER
+- Simpler user interface. Having a Tutorial > Lesson > Step structure is too deep for a prototype implementation and not so important.
+- Let's create one page with a huge editor: BUILDER
 - There will be small text box, with a NEXT button
 - BUILDER-STEP model: code (getValue), description, history(getHistory)
 
@@ -196,3 +196,16 @@ Instructions: https://github.com/ember-cli/ember-cli-eslint
 
 - History transform with Ember.ObjectProxy
 - Using Ember-wormhole for rendering controller toolbar on different place
+
+- Creating PLAYER
+- Downloading steps
+- Showing steps in sequential order
+- Updating content based on the actual step
+- Control buttons (back, forward)
+
+### 12 Factor App principles
+
+https://12factor.net
+
+- How this implementation try to follow the 12 factor app principals?
+

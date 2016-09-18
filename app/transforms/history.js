@@ -8,7 +8,9 @@ export default DS.Transform.extend({
 
     try {
       object = JSON.parse(serialized);
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
 
     if (!object) {
       object = { done: [], undone: [] };

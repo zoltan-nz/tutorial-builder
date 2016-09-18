@@ -24,7 +24,7 @@ export default Ember.Route.extend({
       return this._createFirstStep(theBuilder).then(() => theBuilder.save())
     }
 
-    return theBuilder.save();
+    return theBuilder;
   },
 
   _createBoth() {

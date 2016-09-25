@@ -26,8 +26,6 @@ Tutorial Builder \\
 \supervisor{Dr Stuart Marshall}
 
 % \date{}
-\\
-\\
 
 \begin{document}
 
@@ -202,29 +200,7 @@ User can save the edited content also. Most of them can be embed in a blog post 
 
 \newpage
 
-\begin{tabular}{|l|l|l|l|l|}
-\hline
-& Code Pen & JSBin & JSFiddle & Ember Twiddle \\
-\hline
-Link to open source project & not open source & [a] & not open source & [b]  \\
-\hline
-Website & [c] & [d] & [e] & [f] \\
-\hline
-Code Editor & Code Mirror & Code Mirror & Code Mirror & Code Mirror \\
-\hline
-Support embedding & yes & yes & yes & yes \\
-\hline
-\end{tabular}\\
-
-Links:
-\begin{itemize}[noitemsep]
-\item a: \url{https://github.com/jsbin/jsbin} \\
-\item b: \url{https://github.com/ember-cli/ember-twiddle} \\
-\item c: \url{http://codepen.io} \\
-\item d: \url{http://jsbin.com} \\
-\item e: \url{https://jsfiddle.net/} \\
-\item f: \url{https://ember-twiddle.com/} \\
-\end{itemize}
+\includegraphics[width=1\textwidth]{assets/code-sharing-website-review}\\*[8pt]
 
 \chapter{Design and Implementation}
 
@@ -337,7 +313,7 @@ With this simplified structure I was able to focus only the implementation of th
 
 This graph summarizes these database tables and models:
 
-\includegraphics[width=1\textwidth]{figures/database_tables}\\*[8pt]
+\includegraphics[width=1\textwidth]{assets/database-tables}\\*[8pt]
 
 \section{The story of 12 factor apps}
 
@@ -373,21 +349,132 @@ Instead of repeating all the 12 rules, I describe how I use a certain rule in my
 
 \section{Data down actions up}
 
+In software architecture, and computer science it is always a challenge, how could you write clean code \cite{clean-code}, which is always readable and easy to maintain. I built my project mainly in JavaScript, and it is known that JavaScript is not so strickt language, no strick types as in Java, it doesn't force structured object oriented patterns. However, JavaScript changed a lot in the last few years, thanks for the new version. The new JavaScript standard called ES2015 or ES6 \cite{es6}.
+
+JavaScript with ES6 syntax and with a heavily object orinted JavaScript framework, like Ember.js, can force you to write an easy to understand, easy to maintain system. Ember.js is a Model-View-Controller type framework and it helps to separate concerns and make your code more SOLID \cite{solid}.
+
+With modern JavaScript frameworks we mainly build frontend, user faced applications, so the view layer of our product is a webpage or a web component. These pages or components are a mix of static and dynamic content. Static content is built in the presentation template, however the dynamic content usually provided by a backend service from a database.
+
+Modern JavaScript frameworks are adopted a new pattern, which determines the data flow inside the application. It is driven by the user interaction. When a user opens a web application and navigates inside this webapp, usually the browser changes the actual web address in the location bar. We call it "routing". So when the route changes, mainly we navigate to a new page. We usually call it, the "state" of the application is changed. It triggers a series of steps. One of the most important step, that the app tries to access to dynamic data which will be rendered on the page. This data can come from an allready cached local data store or can send an AJAX request to the backend system and download it. After this data rendered on the page.
+
+On a website the previously prepoluated data can change, for example in a web form we change a text in the text field, or change a code in a web based code editor, or the user click on a button, which turns on or off an information. Each case we actually change the data.
+
+Originally web frameworks are introduced a uniqe concept, which is called two-way bindings. When data change somewhere in the application, it broadcasted everywhere, so quite quickly we were able to build a dynamic web application. In our project, when a user edits code in the code editor, the preview window automatically updates, because the code is change in that IFRAME also.
+
+Two-way binding has own benefits and use cases. It is very usefull when we use data in the same context (same page, same object oriented class in our code). However, two-way bindings can cause data leak, so when we change something on the page, an unexpected behaviour could happen. It can be easily managed in a small application, but when our application grows, very difficult to maintain.
+
+For this reason, there is this new pattern, what we call "data down actions up". It is prefered to turning off the two-way binding in the application and keep the automatic update in a small scope only. When we want to populate the new data, it could be calling with a direct function in our app. It is called actions. So instead of letting the invisible "magic" update states in our application, we clearly call and send actions to the other part of the app.
+
+The benefit of this, if someone else try to understand our code, there is not any invisible part.
+
 \section{Low level design decisions}
+
+- Managing css with sass and adding bootstrap.
+
+- Code mirror plugin
+
+- Bread crumbs
+
+
+
+
 
 \subsection{Communication between two components}
 
+- Adding ember-wormhole
+
 \section{Challenges}
 
+Database management:
+- using mock (mirage)
+- using ruby on rails backend
+- keeping only Firebase
+
+
 \section{Reflection}
+
+- Great part
+- Need improvement
+- Would do differently?
 
 \chapter{Evaluation}
 
 \section{Process}
 
+The product evaluation has two parts. The first part is expert evaluation, which means, I collected feedbacks from my direct colleagues (from my workplace and from research group). The second part is a survey, which helped to collect opinion about programming tutorial usage.
+
 \subsection{Expert evaluation}
 
+Expert evaluation helps to discover quickly the "low-hanging fruits", obvious usability problems, without investing extra resource for a wide user testing.
+
+My reserach product is a prototype, which cannot be perfect for the first iteration, but already can help us to direct our future study.
+
+Feedbacks from experts:
+
+* Deleting a tutorial step is confusing, because
+
 \subsection{Tutorial Builder Survey}
+
+Watching, reading or following tutorials are important part of our learning process, but everybody could have different motivation. I launched a survey for collecting information about user's motivation and their goal.
+
+Victoria University ethics committee approved my request, so I run a little campaign on my twitter, on my blog and shared the link in different developer chat groups.
+
+I built the survey on Google Survey platform, and it was presented as the following screenshot shows.
+
+\includegraphics[width=1\textwidth]{assets/survey-screenshot.png}\\*[8pt]
+
+\textbf{The questions and options:}
+
+\noindent When you learn a new framework or experiment with a new library/tool, what is your main motivation?
+\begin{itemize}[noitemsep]
+\item Need for my work, it is part of my job
+\item I have a hobby project and I would like to solve a problem.
+\item I just love exploring new technologies, it is fun.
+\item Other...
+\end{itemize}
+
+\noindent How experienced are you in programming?
+\begin{itemize}[noitemsep]
+\item Beginner
+\item Intermediate
+\item Experienced
+\end{itemize}
+
+\noindent What is your prefered method to get to know a new framework/library?
+\begin{itemize}[noitemsep]
+\item I prefer to read documentation and to see static code examples
+\item I like to watch videos about the framework/library
+\item I prefer to try the framework/library in an interactive code editor and to see the preview
+\end{itemize}
+
+\noindent When you try a library or a framework in a web based code editor, which features are important to you? (Scale from 1-not important to 6-very important)
+\begin{itemize}[noitemsep]
+\item There is a step by step introduction of the usage of the library
+\item I can pause, reverse the introduction
+\item I can modify the code in the web based code editor
+\item I can share/export/copy the code from the web based code editor
+\end{itemize}
+
+What other features would you like to see in a web based interactive tutorial.
+(open question)
+
+I got 68 answers.
+
+The results from the survey.
+
+\includegraphics[width=1\textwidth]{assets/survey-Q1.png}\\*[8pt]
+
+... More pictures
+
+It was great to see how many suggestions arrived for the open question.
+
+Most importants:
+
+...
+...
+
+
+
 
 \section{Analysis}
 
@@ -417,8 +504,18 @@ JSON Api - \url{http://jsonapi.org}
 \bibitem{surge}
 Surge.sh Static Website Hosting Service - \url{http://surge.sh}
 
+\bibitem{clean-code}
+Book: Robert C. Martin - Clean Code - ISBN-13: 978-0132350884
+
+\bibitem{es6}
+ES6 Standard - \url{http://www.ecma-international.org/ecma-262/6.0/}
+
+\bibitem{solid}
+SOLID pattern - \url{https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)}
+
 \end{thebibliography}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
+

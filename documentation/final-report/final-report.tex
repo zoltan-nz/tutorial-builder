@@ -369,11 +369,35 @@ The benefit of this, if someone else try to understand our code, there is not an
 
 \section{Low level design decisions}
 
-- Managing css with sass and adding bootstrap.
+In this section I collect together those questions what appeared during the implementation process.
 
-- Code mirror plugin
+\subsection{Managing css with sass and adding bootstrap.}
 
-- Bread crumbs
+Bootstrap\cite{bootstrap} design system is still one of the most popular, out of the box solution when we need a decent, desktop and mobile friendly layout and UI/UX.
+
+Bootstrap originally uses Less\cite{less} css compiler, however the most popular nowadays is Sass\cite{sass}. (Css compilers help us to maintain a larger stylesheet system, so it can keep our css structured) I prefer to use Sass with Bootstrap.
+
+Ember.js is famous about its add-on ecosystem. We can extend our project with a one liner console command, we don't have to manually download, copy-paste files in our project, enough if we run a simple "ember install" and this command line tool manages it for us.
+
+I use this ember installer for adding Sass and Bootstrap to our project.
+
+Bootstrap has a quite large variable file, where we can configure and customize the look and feel. This is placed in the 'app/styles' folder.
+
+During the project I added a few extra css class which helps to highlight the code preview window.
+
+\subsection{Code mirror plugin}
+
+After reviewing web based code editor options, I choosed Code Mirror, because it is widely used, well documented and easy to add to our project.
+
+Ember installer can help us in this case also. It adds with a one line command the default Code Mirror library and settings in our application.
+
+However, turning on extra features and setup different colorschema on this plugin involved more customization.
+
+I followed the documentation on the Code Mirror official website and the Ember Addon website. Unfortunatelly, the documentation of the Ember addon was not correct, so I had to manually disassemble the source code and figuring out how can I add the configuration what I planned. Thanks for this additionaly changes, the code editor has the "solarized" style, it can manage "vim", "emacs" and "sublime" key maps in my project. The editor can understand "xml", "javascript", "css", "handlebars", "markdown" syntax.
+
+I wanted to extend the editor with the widely used "Emmet" feature. Emmet is a code editing mode of html and css and it automatically completes your code, when typing. One of the real challenge was to implement this addition, I write more about this in the Challenges section.
+
+\subsection{Bread crumbs}
 
 
 
@@ -385,10 +409,47 @@ The benefit of this, if someone else try to understand our code, there is not an
 
 \section{Challenges}
 
+\subsection{Addig Emmet to Code Mirror}
+
+Emmet is an essential toolkit for web-developers, which can be added to most of the popular code editor. We can write html and css code only using simple abbreviation \cite{emmet}.
+
+As I mentioned earlier, using Ember install helped me to add the Code Mirror code editor. Unfortunatelly, this addon focuses only the very basic user scenario, simple code editing.
+
+Digging deep in the Ember Addon implementation, which is called Ivy-CodeMirror\cite{ivy-codemirror}, I found out how the Code Mirror instance managed by this addon.
+
+In my codebase, you can find a unique special component, which initialize Emmet with CodeMirror, when a code window added to the page. (Location of the component file: "app/components/ivy-codemirror.js")
+
+
+
+
+
 Database management:
 - using mock (mirage)
 - using ruby on rails backend
 - keeping only Firebase
+
+
+\section{Managing history changes}
+
+1. Create Step 1, add Line 1
+2. Create Step 2, add Line 2
+3. Create Step 3, add Line 3
+4. Modify Step 1, add a Line after Line 1
+
+Line 2, move to Line 3 and Line 3 moves to Line 4
+
+Add snapshots, Start Phase and End Phase to each Step.
+
+H1. Snapshot N1, Empty state
+H2. Create Step S1, add Line L1
+H3. Snapshot N2, H1 + H2.
+H4. Create Step S2, add Line L2
+H5. Snapshot N3, H3 + H4
+H6. Modify Step S1, add new Line after L1
+H7. Update Snapshot N2: H1 + H2 + H6
+H8. Update Snapshot N3: H7 + H3
+
+Like pointers.
 
 
 \section{Reflection}
@@ -401,7 +462,7 @@ Database management:
 
 \section{Process}
 
-The product evaluation has two parts. The first part is expert evaluation, which means, I collected feedbacks from my direct colleagues (from my workplace and from research group). The second part is a survey, which helped to collect opinion about programming tutorial usage.
+The product evaluation has two parts. The first part is expert evaluation, which means, I collected feedbacks from my direct colleagues (from my workplace and from research group). In this section I describe the implemented product with screenshots. The second part is a survey, which helped to collect opinion about programming tutorial usage.
 
 \subsection{Expert evaluation}
 
@@ -412,6 +473,10 @@ My reserach product is a prototype, which cannot be perfect for the first iterat
 Feedbacks from experts:
 
 * Deleting a tutorial step is confusing, because
+
+How the app works and what it does?
+
+
 
 \subsection{Tutorial Builder Survey}
 
@@ -478,6 +543,20 @@ Most importants:
 
 \section{Analysis}
 
+Working on a project like this, helped me to experiment with different solutions and I learned a lot how can I connect together different part of a more complex solution.
+
+The step by step tutorial is just a beginning. I visualized a much bigger project, which actually can be really helpful for teachers and for students also.
+
+My original plan was to show how could you build a more complex application. When we build a web app, we deal with a bunch of files and complex directory structure. So many moving parts.
+
+Keeping this in sync, and showing the changes of directories and file content, we already use Git. So one of the obvious choice could be to bring together a step-by-step builder tool, like this prototype and instead of storing this steps in a database, we should use a git repository website, like GitHub or Bitbucket for storing states, steps. Each commit would be a step. It clearly shows the difference between actual step and previous step.
+
+A git repository store the file structure and file content, using the api of this service, we can show on our website, in our code editor, the whole project.
+
+The challenge is the same as in this little prototype. How can we go back in time and change an earlier step, with keeping the history.
+
+With git, we can add a new commit to the history, sequentially, however, it would modify an interim step. This is really a challenge. Because the code change history is in series, we cannot modify that one, however, we can reference back to the original step, and actually the change is not really the codebase change, it is more likely the step change.
+
 \chapter{Conclusion}
 
 
@@ -512,6 +591,21 @@ ES6 Standard - \url{http://www.ecma-international.org/ecma-262/6.0/}
 
 \bibitem{solid}
 SOLID pattern - \url{https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)}
+
+\bibitem{bootstrap}
+Bootstrap - \url{http://getbootstrap.com}
+
+\bibitem{less}
+Less - \url{http://lesscss.org/}
+
+\bibitem{sass}
+Sass - \url{http://sass-lang.com/}
+
+\bibitem{emmet}
+Emmet - \url{http://emmet.io/}
+
+\bibitem{ivy-codemirror}
+Ivy-CodeMirror - \url{https://github.com/IvyApp/ivy-codemirror}
 
 \end{thebibliography}
 

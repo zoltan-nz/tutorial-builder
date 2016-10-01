@@ -397,15 +397,33 @@ I followed the documentation on the Code Mirror official website and the Ember A
 
 I wanted to extend the editor with the widely used "Emmet" feature. Emmet is a code editing mode of html and css and it automatically completes your code, when typing. One of the real challenge was to implement this addition, I write more about this in the Challenges section.
 
-\subsection{Bread crumbs}
+\subsection{Breadcrumbs}
 
+One of the most important rule in UX, that the user should not be confused. When they use a website and navigate in different arrea, they have to know where they are. Usually under the navigation bar, there is a row, where we show the actual position inside the site architecture. It is called breadcrumbs.
 
+Adding breadcrumbs to the project started with a search. We can find Ember.js addons on \url{www.emberobserver.com}. The most popular breadcrumb addon is ember-crumby\cite{ember-crumby}.
 
+With the "ember install" command line tool, this package is added to the project. I was able to insert a bootstrap compatible breadcrumb under the navigation bar, which automatically update when we navigate to a new page.
 
+Screenshot about the implementation:
+
+\includegraphics[width=1\textwidth]{assets/breadcrumb-screenshot.png}\\*[8pt]
 
 \subsection{Communication between two components}
 
-- Adding ember-wormhole
+There is an interesting problem domain on JavaScript applications. When we build a JavaScript based single page application, we use little elements to build a larger section. This little elements are called components and moving this components next to each other create a webpage. Components reusable, so we have to create, develop only once and we can insert in different pages. The above explained breadcrumb is a component also, which was created by other developers, so we can just simply insert in our app.
+
+However, these components usually independenlty do what they has to do, and they don't worry too much about other part of the application, except if we connect them together.
+
+Other problem with the components, that maybe a little part from a component should be inserted somwhere else.
+
+Luckily other developers already solved this problem. I added "ember-wormhole" addon to the project, because this helps me to insert logically connected html elements somewhere else on the website.
+
+In my step editor, there is an "Undo/Redo" button component, which belongs to the Step editor form, which is on the right side of the page. This wormhole plugin helped me to keep these two part connected.
+
+You can see the implementation in this screenshot:
+
+\includegraphics[width=1\textwidth]{assets/wormhole-screenshot.png}\\*[8pt]
 
 \section{Challenges}
 
@@ -413,47 +431,56 @@ I wanted to extend the editor with the widely used "Emmet" feature. Emmet is a c
 
 Emmet is an essential toolkit for web-developers, which can be added to most of the popular code editor. We can write html and css code only using simple abbreviation \cite{emmet}.
 
-As I mentioned earlier, using Ember install helped me to add the Code Mirror code editor. Unfortunatelly, this addon focuses only the very basic user scenario, simple code editing.
+As I mentioned earlier, using Ember install helped me to add the Code Mirror code editor. Unfortunatelly, this addon focuses only the very basic user scenarios, mainly for simple code editing.
 
 Digging deep in the Ember Addon implementation, which is called Ivy-CodeMirror\cite{ivy-codemirror}, I found out how the Code Mirror instance managed by this addon.
 
 In my codebase, you can find a unique special component, which initialize Emmet with CodeMirror, when a code window added to the page. (Location of the component file: "app/components/ivy-codemirror.js")
 
+Thanks for this changes, in my final implementation you can use this Emmet editing feature in each editor window.
 
+\subsection{Database management}
 
+Managing database and choosing the right solution is always desire more research and more iterations.
 
+My project finally use Firebase, as I planned in my proposal also, however I had to try out other options also. During the development process, I had problem with the speed of the Firebase.
 
-Database management:
-- using mock (mirage)
-- using ruby on rails backend
-- keeping only Firebase
+Firebase is a cloud based database, so it needs internet connection all the time. We cannot use the app offline. Additionally Firebase has limitations also.
 
+Firstly I tried to build a unique backend system in Ruby on Rails. You can find the actual state of this application on my Github \cite{tutorial-builder-backend}. I implemented a special saving mechanism in the code editor. When we modify the code in the editor, the code changes will be saved every third second automatically, so it does not overheat the database.
+
+However, implementing a full backend system is a big overhead in a smaller prototype project, like this.
+
+Secondly I tried to use a mocking system, which is popular in Ember.js ecosystem. This mocking addon is called Ember Mirage \cite{ember-mirage}. When you use a mocking system in a frontend application, you can run the application without any backend support, because all the database related backend respond is generated by an other JavaScript code, a mocking system. You can read and save data. It is super fast and easy to experiment with it, the only disadvantage, that the saved data is not permanent, if you close the web browser, all data will be deleted. Usually we use "fixtures" for prepopulate the database when we open the app with a mock database. I experimented with this mocking system, but finally I went back to Firebase, because it was important for me to upload the app to a public server and connect it to a real database, so I just continued the development process with Firebase.
 
 \section{Managing history changes}
 
-1. Create Step 1, add Line 1
-2. Create Step 2, add Line 2
-3. Create Step 3, add Line 3
-4. Modify Step 1, add a Line after Line 1
+In a step by step tutorial builder, one the core functionality is adding steps to a tutorial. It is important also, that we should be able to edit, modify, delete, reorganize these steps.
 
-Line 2, move to Line 3 and Line 3 moves to Line 4
+A programming tutorial main content is code. Code has lines. Usually in the first step we add a few lines, so there will be two-three lines of code in the code editor. In the next steps we add more and more. We extend lines, remove lines. Each step based on the previous state, each incrementally change the code in the code editor.
 
-Add snapshots, Start Phase and End Phase to each Step.
+Let say we have 4-5 steps and we would like to remove the code what we saved in the Step 3. After this changes the Step 2 should be the start state of the Step 4, so we should manually adjust Step 4 start state to be the same as the end of Step 2. We can show the difference between the final state of the Step 2 and the actual start state of the Step 4, highlight the differences and ask the user to adjust. This looks simple when we talk about a few lines of code. However, when we build a bigger tutorial, this could be a nightmare.
 
-H1. Snapshot N1, Empty state
-H2. Create Step S1, add Line L1
-H3. Snapshot N2, H1 + H2.
-H4. Create Step S2, add Line L2
-H5. Snapshot N3, H3 + H4
-H6. Modify Step S1, add new Line after L1
-H7. Update Snapshot N2: H1 + H2 + H6
-H8. Update Snapshot N3: H7 + H3
+I was thinking about this problem a lot and I tried to use the following simplification to solve this problem.
 
-Like pointers.
+One of the idea is creating a snapshot at beginning of a step and at the final state of a step.
 
-!!The changes should be saved as relative to the previous snapshot.!!
+In the following abstraction, H1, H2... is a history element, something what we do with the code. S1, S2... is the Step. L1, L2... is the line of code.
 
+\begin{itemize}[noitemsep]
+\item H1. Snapshot N1, Empty state"
+\item H2. Create Step S1, add Line L1
+\item H3. Snapshot N2, H1 + H2.
+\item H4. Create Step S2, add Line L2
+\item H5. Snapshot N3, H3 + H4
+\item H6. Modify Step S1, add new Line after L1
+\item H7. Update Snapshot N2: H1 + H2 + H6
+\item H8. Update Snapshot N3: H7 + H3
+\end{itemize}
 
+In this concept a snapshot like a pointer, which collect together the connected history elements.
+
+However, this concept could work only if all the changes what we make in the code editor saved as relative changes. For example, if I have something in the Line 1 and we add something in the Line 2, I save the changes as "add a line after the last line of the previous step", so if we delete the Step 1, the relativ instruction still work.
 
 \section{Reflection}
 
@@ -609,6 +636,15 @@ Emmet - \url{http://emmet.io/}
 
 \bibitem{ivy-codemirror}
 Ivy-CodeMirror - \url{https://github.com/IvyApp/ivy-codemirror}
+
+\bititem{ember-crumby}
+Ember-Crumby Addon - \url{https://github.com/poteto/ember-crumbly}
+
+\bibitem{tutorial-builder-backend}
+Tutorial Builder Backend - Ruby on Rails app \url{https://github.com/zoltan-nz/tutorial-builder-backend}
+
+\bibitem{ember-mirage}
+Ember Mirage - \url{http://www.ember-cli-mirage.com/}
 
 \end{thebibliography}
 

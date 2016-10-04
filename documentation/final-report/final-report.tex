@@ -482,6 +482,12 @@ In this concept a snapshot like a pointer, which collect together the connected 
 
 However, this concept could work only if all the changes what we make in the code editor saved as relative changes. For example, if I have something in the Line 1 and we add something in the Line 2, I save the changes as "add a line after the last line of the previous step", so if we delete the Step 1, the relativ instruction still work.
 
+Unfortunatelly, managing relative history is not possible with Code Mirror at the moment. My plan is to extend the tool with this feature in a following project.
+
+I was thinking about an other theory. We use git and git main feature is tracking changes. It keeps the differences between two commit, so we can see what's happened between two commit. These changes stored as relative changes also. However, one of the strict restriction in git, which is an important feature also, we cannot easily modify the history of the commits, so when would like to rewrite the history, we actually has to make a copy from the actual git repository.
+
+In this case, the problem is the same again as I described above. How could we match together the previous step final state with the next step start state. Git raise a "conflict", so the user has to manually resolve this problem. So we are on the same path again with this theory also.
+
 \section{Reflection}
 
 - Great part

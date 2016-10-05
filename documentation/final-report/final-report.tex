@@ -401,7 +401,7 @@ I wanted to extend the editor with the widely used "Emmet" feature. Emmet is a c
 
 One of the most important rule in UX, that the user should not be confused. When they use a website and navigate in different arrea, they have to know where they are. Usually under the navigation bar, there is a row, where we show the actual position inside the site architecture. It is called breadcrumbs.
 
-Adding breadcrumbs to the project started with a search. We can find Ember.js addons on \url{www.emberobserver.com}. The most popular breadcrumb addon is ember-crumby\cite{ember-crumby}.
+Adding breadcrumbs to the project started with a search. We can find Ember.js addons on \url{www.emberobserver.com}. The most popular breadcrumb addon is ember-crumbly \cite{ember-crumbly}.
 
 With the "ember install" command line tool, this package is added to the project. I was able to insert a bootstrap compatible breadcrumb under the navigation bar, which automatically update when we navigate to a new page.
 
@@ -433,7 +433,7 @@ Emmet is an essential toolkit for web-developers, which can be added to most of 
 
 As I mentioned earlier, using Ember install helped me to add the Code Mirror code editor. Unfortunatelly, this addon focuses only the very basic user scenarios, mainly for simple code editing.
 
-Digging deep in the Ember Addon implementation, which is called Ivy-CodeMirror\cite{ivy-codemirror}, I found out how the Code Mirror instance managed by this addon.
+Digging deep in the Ember Addon implementation, which is called Ivy-CodeMirror \cite{ivy-codemirror}, I found out how the Code Mirror instance managed by this addon.
 
 In my codebase, you can find a unique special component, which initialize Emmet with CodeMirror, when a code window added to the page. (Location of the component file: "app/components/ivy-codemirror.js")
 
@@ -490,9 +490,23 @@ In this case, the problem is the same again as I described above. How could we m
 
 \section{Reflection}
 
-- Great part
-- Need improvement
-- Would do differently?
+\subsection{Great part}
+
+I think, it was great working on the architecture of this project. Thinking about the different element and technology and how these parts connect together. Working with Ember.js is fun and I learned a lot about this modern, matured frontend framework.
+
+Bulding the backend system, and trying out different approach was interesting, especially using Ruby on Rails, which is one of my favourite technology.
+
+I am impressed, how complex and advance most of the web based code editor tool. Reviewing them gave me the opportunity to understand more, how they work. Adding Code Mirror to my project was a good joice, because it is feature heavy with an extensive public programming API.
+
+\subsection {Need improvement}
+
+As I already explained in the challenging section, managing history, deleting or moving steps in a tutorial could be improved.
+
+\subsection {Would do differently?}
+
+This project is about experimenting and learning new tools, solving problems and developing solutions for a certain problem. This process is obviously involve steps which does not produce real value at the end, however, it can proof that direction is not the right way.
+
+I feel, my plan was too ambitious at the beginning, and I had to realize that not so easy to implement what I imagined.
 
 \chapter{Evaluation}
 
@@ -506,13 +520,27 @@ Expert evaluation helps to discover quickly the "low-hanging fruits", obvious us
 
 My reserach product is a prototype, which cannot be perfect for the first iteration, but already can help us to direct our future study.
 
-Feedbacks from experts:
-
-* Deleting a tutorial step is confusing, because
-
 How the app works and what it does?
 
+Open screen is mainly just a placeholder.
 
+\includegraphics[width=1\textwidth]{assets/tour-screenshots/home-page.png}\\*[8pt]
+
+The Builder
+
+\includegraphics[width=1\textwidth]{assets/tour-screenshots/the-builder.png}\\*[8pt]
+
+The Player
+
+\includegraphics[width=1\textwidth]{assets/tour-screenshots/the-player.png}\\*[8pt]
+
+Sandboxes
+
+\includegraphics[width=1\textwidth]{assets/tour-screenshots/the-sandbox.png}\\*[8pt]
+
+Dashboard
+
+\includegraphics[width=1\textwidth]{assets/tour-screenshots/dashboard.png}\\*[8pt]
 
 \subsection{Tutorial Builder Survey}
 
@@ -559,13 +587,13 @@ I built the survey on Google Survey platform, and it was presented as the follow
 What other features would you like to see in a web based interactive tutorial.
 (open question)
 
-I got 68 answers.
+I got 79 answers.
 
 The results from the survey.
 
-\includegraphics[width=1\textwidth]{assets/survey-Q1.png}\\*[8pt]
+\includegraphics[width=1\textwidth]{assets/survey-result/1.png}\\*[8pt]
 
-... More pictures
+\includegraphics[width=1\textwidth]{assets/survey-result/2.png}\\*[8pt]
 
 It was great to see how many suggestions arrived for the open question.
 
@@ -643,8 +671,8 @@ Emmet - \url{http://emmet.io/}
 \bibitem{ivy-codemirror}
 Ivy-CodeMirror - \url{https://github.com/IvyApp/ivy-codemirror}
 
-\bititem{ember-crumby}
-Ember-Crumby Addon - \url{https://github.com/poteto/ember-crumbly}
+\bibitem{ember-crumbly}
+Ember-Crumbly Addon - \url{https://github.com/poteto/ember-crumbly}
 
 \bibitem{tutorial-builder-backend}
 Tutorial Builder Backend - Ruby on Rails app \url{https://github.com/zoltan-nz/tutorial-builder-backend}

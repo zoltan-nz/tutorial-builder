@@ -60,11 +60,11 @@ Project source code: \url{http://github.com/zoltan-nz/tutorial-builder}
 
 \chapter{Introduction}
 
-This project is about building an online publishing prototype, using code editors and step by step instructions to present programming challenges and solutions for a computer science problem.
+This project is about building an online publishing prototype, using code editors, and step by step instructions to present programming challenges and solutions for a computer science related problem.
 
-The prototype has two parts, an administration area, where the content creator can build a tutorial, and a player tool, where the recorded steps would be presented.
+The prototype has two parts, an administration area, where the content creator can build a tutorial, and a player tool, where the recorded steps will be presented.
 
-The primary target user is the creator, who composes a new tutorial. The creator can be a teacher, or an open source project owner, who would like to introduce their tool or code.
+The primary target user is the creator, who composes new tutorials. The creator can be a teacher, or an open source project owner, who would like to introduce their tool or code.
 
 The secondary user is the consumer, who wants to learn or know more about a problem or a coding solution.
 
@@ -76,11 +76,11 @@ In information technology, especially in programming languages, writing blog pos
 
 Creating interactive tutorials are appealing, but the production cost is much higher. Recording a video tutorial or especially updating it is time-consuming, and it involves more effort from the creator.
 
-I think an ideal solution would be a healthy mix of static and dynamic contents, where the learners can read instructions but meanwhile they can watch the steps in a code editor, in a more realistic environment.
+I think an ideal solution would be a healthy mix of static and dynamic content, where learners can read instructions meanwhile they can watch the steps in a code editor, in a more realistic environment.
 
 \section{The problem}
 
-When a developer, teacher or hobbyist would like to present a computer programming problem or solution, most of the times they record a video and publish it on YouTube. Sometimes the easiest way to record a video of a conference/meetup presentation or a live coding session. However recording and editing a high-quality video is time-consuming and less flexible. It is also hard to update.
+When a developer, teacher or hobbyist would like to present a computer programming problem or solution, most of the times they record a video, and publish it on YouTube. However recording and editing a high-quality video is time-consuming and less flexible. It is also hard to update.
 
 Other problem with showing tutorials with a simple video, that the audience cannot give it a try, they have to configure their computer and environment to play with the presented solution.
 
@@ -96,7 +96,7 @@ Furthermore, the user is able to experience it and can see the result, so the ne
 
 Content creator, open source project maintainer, teacher.
 
-Their motivation is to present a technical problem and the solution in a clear and an easy-to-understand way. The best option is to show a demo, what happens when we insert the suggested code, how easy it is to use. Most of the times a presentation involves more steps. For example, we would like to show a starting state, maybe a few lines of code which we are able to simplify, so in this case, the first step is to show the problem and after we show step by step how we solve that.
+Their motivation is to present a technical problem and its solution in a clear, easy-to-understand way. The best option is to show a demo, what happens when we insert the suggested code, how easy it is to use. Most of the times a presentation involves more steps. For example, we would like to show a starting state, maybe a few lines of code which we are able to simplify, so in this case, the first step is to show the problem, and after we show how we solve it step by step.
 
 \subsection{Secondary persona}
 
@@ -124,7 +124,7 @@ During the development and research work, I found a few related interesting proj
 
 I found this project when I checked the most popular web-based code editor tool, CodeMirror website. The creator of the CodeMirror wanted to present their tool with a realistic way, so CodeMirror Movie was born. \cite{cm-movie}
 
-This solution highly coupled with CodeMirror, it is similar to an add-on, so it is possible to attach any CodeMirror implementation. (More about CodeMirror in Section \ref{comparision})
+This solution highly coupled with CodeMirror, it is similar to an add-on, so it is possible to attach any CodeMirror implementation. (More about CodeMirror in Section \ref{comparison})
 
 Adding CodeMirror Movie to our project is straightforward because the open source repository provides a CSS and a JS file, so they can be added to any page.
 
@@ -148,7 +148,7 @@ Cons:
 \end{itemize}
 
 
-\section{Comparison of online code editors} \label{comparision}
+\section{Comparison of online code editors} \label{comparison}
 
 There are 3 popular web based code editors: CodeMirror, Ace Editor and Monaco.
 
@@ -272,15 +272,15 @@ I have been using GitHub for managing source code and tracking code changes. Lin
 
 One of the core element of an application is the database and model layer. Determining data entities are an important step of the planning process and help us in the implementation process.
 
-In a fully featured implementation our database structure would be more complex and would cover extended usecases. Firstly, I list a wider model structure, after I will focus on models what I implemented in the prototype.
+In a fully featured implementation our database structure would be more complex and would cover extended use cases. Firstly, I list a wider model structure, after I will focus on models what I implemented in the prototype.
 
-Most of the web applications has a user and authentication layer, user related information would be stored in "user" model. Keeping it simple the user model would have three fields: username, password, is\_admin. Username and password is the minimum what we need to identify different users. Additionally we have to store wheather the user has administrator privileges or not.
+Most of the web applications has a user and authentication layer, user related information would be stored in "user" model. Keeping it simple the user model would have three fields: username, password, is\_admin. Username and password is the minimum what we need to identify different users. Additionally we have to store whether the user has administrator privileges or not.
 
 Because of our main problem domain is tutorials, one of the most important model is the entity where we store the different tutorials. So a "tutorial" model would have at least a "name" field. The tutorial model has many "lesson". Each lesson has a "title", a field where we can store the position, the "sort" value, and it has many "steps" also. So the smallest level of this model structure is the "step" model. Step fields: name, type, code, sort.
 
 Simply: Tutorial -\textgreater Lesson -\textgreater Step
 
-The demo app uses this nested model structure in the "Dashboard" section. During the implementation process, my first iteration tried to cover this wider usecase, however, I realized, the challenge is not really on this area.
+The demo app uses this nested model structure in the "Dashboard" section. During the implementation process, my first iteration tried to cover this wider use case, however, I realized, the challenge is not really on this area.
 
 Finally I created a "builder" model and a "builder-step" model.
 
@@ -335,13 +335,13 @@ Instead of repeating all the 12 rules, I describe how I use a certain rule in my
 
 6. Processes. In our case this rule is relevant also, because our app is a static, single page application, so it is a stateless and "share-nothing" solution.
 
-7. Port binding. This rule would be relevant only if I would use my own server. The backend service and the static single-page application would run from this server using a webserver. In this case the backend server, which could be a Ruby on Rails application, would run on a different port behind the webserver, for example on "http://localhost:3000/" address, however it would be open on the same domain name, but in a subdirectory. For example, if the our Ember.js single-page application would run on "http://tutorial-builder.com/", the Ruby on Rails backend API would be available on "http://tutorial-builder.com/api".
+7. Port binding. This rule would be relevant only if I would use my own server. The backend service and the static single-page application would run from this server using a web server. In this case the backend server, which could be a Ruby on Rails application, would run on a different port behind the web server, for example on "http://localhost:3000/" address, however it would be open on the same domain name, but in a subdirectory. For example, if the our Ember.js single-page application would run on "http://tutorial-builder.com/", the Ruby on Rails backend API would be available on "http://tutorial-builder.com/api".
 
 8. Concurrency. Our single page application is stateless, basically a static website. In terms of high traffic, it is easy to clone and launch on more server. Luckily, modern static website hosting services automatically clone it on content delivery network, which means, it can scale out.
 
 9. Disposability. We don't have to turn off our web application, we can just deploy and overwrite the previous version in a second, so the next user will download the updated version.
 
-10. Dev/prod parity. As a twelve-factor developer, it is important for me, that I should be able to deploy continously. It means, I can manage the code, update or fix it, test on the developer machine, test with the production database, build the production version and deploy immediately. With my development environment and with tools of my choice, this principal is adopted also.
+10. Dev/prod parity. As a twelve-factor developer, it is important for me, that I should be able to deploy continuously. It means, I can manage the code, update or fix it, test on the developer machine, test with the production database, build the production version and deploy immediately. With my development environment and with tools of my choice, this principle is adopted also.
 
 11. Logs. This feature can be adopted in our environment, but it is not active in our experimental project.
 
@@ -349,19 +349,19 @@ Instead of repeating all the 12 rules, I describe how I use a certain rule in my
 
 \section{Data down actions up}
 
-In software architecture, and computer science it is always a challenge, how could you write clean code \cite{clean-code}, which is always readable and easy to maintain. I built my project mainly in JavaScript, and it is known that JavaScript is not so strickt language, no strick types as in Java, it doesn't force structured object oriented patterns. However, JavaScript changed a lot in the last few years, thanks for the new version. The new JavaScript standard called ES2015 or ES6 \cite{es6}.
+In software architecture, and computer science it is always a challenge, how could you write clean code \cite{clean-code}, which is always readable and easy to maintain. I built my project mainly in JavaScript, and it is known that JavaScript is not so strict language, no strict types as in Java, it doesn't force structured object oriented patterns. However, JavaScript changed a lot in the last few years, thanks for the new version. The new JavaScript standard called ES2015 or ES6 \cite{es6}.
 
-JavaScript with ES6 syntax and with a heavily object orinted JavaScript framework, like Ember.js, can force you to write an easy to understand, easy to maintain system. Ember.js is a Model-View-Controller type framework and it helps to separate concerns and make your code more SOLID \cite{solid}.
+JavaScript with ES6 syntax and with a heavily object oriented JavaScript framework, like Ember.js, can force you to write an easy to understand, easy to maintain system. Ember.js is a Model-View-Controller type framework and it helps to separate concerns and make your code more SOLID \cite{solid}.
 
 With modern JavaScript frameworks we mainly build frontend, user faced applications, so the view layer of our product is a webpage or a web component. These pages or components are a mix of static and dynamic content. Static content is built in the presentation template, however the dynamic content usually provided by a backend service from a database.
 
-Modern JavaScript frameworks are adopted a new pattern, which determines the data flow inside the application. It is driven by the user interaction. When a user opens a web application and navigates inside this webapp, usually the browser changes the actual web address in the location bar. We call it "routing". So when the route changes, mainly we navigate to a new page. We usually call it, the "state" of the application is changed. It triggers a series of steps. One of the most important step, that the app tries to access to dynamic data which will be rendered on the page. This data can come from an allready cached local data store or can send an AJAX request to the backend system and download it. After this data rendered on the page.
+Modern JavaScript frameworks are adopted a new pattern, which determines the data flow inside the application. It is driven by the user interaction. When a user opens a web application and navigates inside this webapp, usually the browser changes the actual web address in the location bar. We call it "routing". So when the route changes, mainly we navigate to a new page. We usually call it, the "state" of the application is changed. It triggers a series of steps. One of the most important step, that the app tries to access to dynamic data which will be rendered on the page. This data can come from an already cached local data store or can send an AJAX request to the backend system and download it. After this data rendered on the page.
 
-On a website the previously prepoluated data can change, for example in a web form we change a text in the text field, or change a code in a web based code editor, or the user click on a button, which turns on or off an information. Each case we actually change the data.
+On a website the previously pre populated data can change, for example in a web form we change a text in the text field, or change a code in a web based code editor, or the user click on a button, which turns on or off an information. Each case we actually change the data.
 
-Originally web frameworks are introduced a uniqe concept, which is called two-way bindings. When data change somewhere in the application, it broadcasted everywhere, so quite quickly we were able to build a dynamic web application. In our project, when a user edits code in the code editor, the preview window automatically updates, because the code is change in that IFRAME also.
+Originally web frameworks are introduced a unique concept, which is called two-way bindings. When data change somewhere in the application, it broadcasted everywhere, so quite quickly we were able to build a dynamic web application. In our project, when a user edits code in the code editor, the preview window automatically updates, because the code is change in that IFRAME also.
 
-Two-way binding has own benefits and use cases. It is very usefull when we use data in the same context (same page, same object oriented class in our code). However, two-way bindings can cause data leak, so when we change something on the page, an unexpected behaviour could happen. It can be easily managed in a small application, but when our application grows, very difficult to maintain.
+Two-way binding has own benefits and use cases. It is very useful when we use data in the same context (same page, same object oriented class in our code). However, two-way bindings can cause data leak, so when we change something on the page, an unexpected behaviour could happen. It can be easily managed in a small application, but when our application grows, very difficult to maintain.
 
 For this reason, there is this new pattern, what we call "data down actions up". It is prefered to turning off the two-way binding in the application and keep the automatic update in a small scope only. When we want to populate the new data, it could be calling with a direct function in our app. It is called actions. So instead of letting the invisible "magic" update states in our application, we clearly call and send actions to the other part of the app.
 
@@ -375,7 +375,7 @@ In this section I collect together those questions what appeared during the impl
 
 Bootstrap\cite{bootstrap} design system is still one of the most popular, out of the box solution when we need a decent, desktop and mobile friendly layout and UI/UX.
 
-Bootstrap originally uses Less\cite{less} css compiler, however the most popular nowadays is Sass\cite{sass}. (Css compilers help us to maintain a larger stylesheet system, so it can keep our css structured) I prefer to use Sass with Bootstrap.
+Bootstrap originally uses Less \cite{less} css compiler, however the most popular nowadays is Sass\cite{sass}. (Css compilers help us to maintain a larger stylesheet system, so it can keep our css structured) I prefer to use Sass with Bootstrap.
 
 Ember.js is famous about its add-on ecosystem. We can extend our project with a one liner console command, we don't have to manually download, copy-paste files in our project, enough if we run a simple "ember install" and this command line tool manages it for us.
 
@@ -385,21 +385,21 @@ Bootstrap has a quite large variable file, where we can configure and customize 
 
 During the project I added a few extra css class which helps to highlight the code preview window.
 
-\subsection{Code mirror plugin} \label{codemirror}
+\subsection{Code Mirror plugin} \label{codemirror}
 
 After reviewing web based code editor options, I choosed Code Mirror, because it is widely used, well documented and easy to add to our project.
 
 Ember installer can help us in this case also. It adds with a one line command the default Code Mirror library and settings in our application.
 
-However, turning on extra features and setup different colorschema on this plugin involved more customization.
+However, turning on extra features and setup different color scheme on this plugin involved more customization.
 
-I followed the documentation on the Code Mirror official website and the Ember Addon website. Unfortunatelly, the documentation of the Ember addon was not correct, so I had to manually disassemble the source code and figuring out how can I add the configuration what I planned. Thanks for this additionaly changes, the code editor has the "solarized" style, it can manage "vim", "emacs" and "sublime" key maps in my project. The editor can understand "xml", "javascript", "css", "handlebars", "markdown" syntax.
+I followed the documentation on the Code Mirror official website and the Ember Addon website. Unfortunately, the documentation of the Ember addon was not correct, so I had to manually disassemble the source code and figuring out how can I add the configuration what I planned. Thanks for this additionally changes, the code editor has the "solarized" style, it can manage "vim", "emacs" and "sublime" key maps in my project. The editor can understand "xml", "javascript", "css", "handlebars", "markdown" syntax.
 
 I wanted to extend the editor with the widely used "Emmet" feature. Emmet is a code editing mode of html and css and it automatically completes your code, when typing. One of the real challenge was to implement this addition, I write more about this in the Challenges section.
 
 \subsection{Breadcrumbs}
 
-One of the most important rule in UX, that the user should not be confused. When they use a website and navigate in different arrea, they have to know where they are. Usually under the navigation bar, there is a row, where we show the actual position inside the site architecture. It is called breadcrumbs.
+One of the most important rule in UX, that the user should not be confused. When they use a website and navigate in different area, they have to know where they are. Usually under the navigation bar, there is a row, where we show the actual position inside the site architecture. It is called breadcrumbs.
 
 Adding breadcrumbs to the project started with a search. We can find Ember.js addons on \url{www.emberobserver.com}. The most popular breadcrumb addon is ember-crumbly \cite{ember-crumbly}.
 
@@ -413,9 +413,9 @@ Screenshot about the implementation:
 
 There is an interesting problem domain on JavaScript applications. When we build a JavaScript based single page application, we use little elements to build a larger section. This little elements are called components and moving this components next to each other create a webpage. Components reusable, so we have to create, develop only once and we can insert in different pages. The above explained breadcrumb is a component also, which was created by other developers, so we can just simply insert in our app.
 
-However, these components usually independenlty do what they has to do, and they don't worry too much about other part of the application, except if we connect them together.
+However, these components usually independently do what they has to do, and they don't worry too much about other part of the application, except if we connect them together.
 
-Other problem with the components, that maybe a little part from a component should be inserted somwhere else.
+Other problem with the components, that maybe a little part from a component should be inserted somewhere else.
 
 Luckily other developers already solved this problem. I added "ember-wormhole" addon to the project, because this helps me to insert logically connected html elements somewhere else on the website.
 
@@ -427,11 +427,11 @@ You can see the implementation in this screenshot:
 
 \section{Challenges}
 
-\subsection{Addig Emmet to Code Mirror}
+\subsection{Adding Emmet to Code Mirror}
 
 Emmet is an essential toolkit for web-developers, which can be added to most of the popular code editor. We can write html and css code only using simple abbreviation \cite{emmet}.
 
-As I mentioned earlier, using Ember install helped me to add the Code Mirror code editor. Unfortunatelly, this addon focuses only the very basic user scenarios, mainly for simple code editing.
+As I mentioned earlier, using Ember install helped me to add the Code Mirror code editor. Unfortunately, this addon focuses only the very basic user scenarios, mainly for simple code editing.
 
 Digging deep in the Ember Addon implementation, which is called Ivy-CodeMirror \cite{ivy-codemirror}, I found out how the Code Mirror instance managed by this addon.
 
@@ -451,7 +451,7 @@ Firstly I tried to build a unique backend system in Ruby on Rails. You can find 
 
 However, implementing a full backend system is a big overhead in a smaller prototype project, like this.
 
-Secondly I tried to use a mocking system, which is popular in Ember.js ecosystem. This mocking addon is called Ember Mirage \cite{ember-mirage}. When you use a mocking system in a frontend application, you can run the application without any backend support, because all the database related backend respond is generated by an other JavaScript code, a mocking system. You can read and save data. It is super fast and easy to experiment with it, the only disadvantage, that the saved data is not permanent, if you close the web browser, all data will be deleted. Usually we use "fixtures" for prepopulate the database when we open the app with a mock database. I experimented with this mocking system, but finally I went back to Firebase, because it was important for me to upload the app to a public server and connect it to a real database, so I just continued the development process with Firebase.
+Secondly I tried to use a mocking system, which is popular in Ember.js ecosystem. This mocking addon is called Ember Mirage \cite{ember-mirage}. When you use a mocking system in a frontend application, you can run the application without any backend support, because all the database related backend response is generated by an other JavaScript code, a mocking system. You can read and save data. It is super fast and easy to experiment with it, the only disadvantage, that the saved data is not permanent, if you close the web browser, all data will be deleted. Usually we use "fixtures" for pre populate the database when we open the app with a mock database. I experimented with this mocking system, but finally I went back to Firebase, because it was important for me to upload the app to a public server and connect it to a real database, so I just continued the development process with Firebase.
 
 \section{Managing history changes}
 
@@ -480,11 +480,11 @@ In the following abstraction, H1, H2... is a history element, something what we 
 
 In this concept a snapshot like a pointer, which collect together the connected history elements.
 
-However, this concept could work only if all the changes what we make in the code editor saved as relative changes. For example, if I have something in the Line 1 and we add something in the Line 2, I save the changes as "add a line after the last line of the previous step", so if we delete the Step 1, the relativ instruction still work.
+However, this concept could work only if all the changes what we make in the code editor saved as relative changes. For example, if I have something in the Line 1 and we add something in the Line 2, I save the changes as "add a line after the last line of the previous step", so if we delete the Step 1, the relative instruction still work.
 
-Unfortunatelly, managing relative history is not possible with Code Mirror at the moment. My plan is to extend the tool with this feature in a following project.
+Unfortunately, managing relative history is not possible with Code Mirror at the moment. My plan is to extend the tool with this feature in a following project.
 
-I was thinking about an other theory. We use git and git main feature is tracking changes. It keeps the differences between two commit, so we can see what's happened between two commit. These changes stored as relative changes also. However, one of the strict restriction in git, which is an important feature also, we cannot easily modify the history of the commits, so when would like to rewrite the history, we actually has to make a copy from the actual git repository.
+I was thinking about another theory. We use git and git main feature is tracking changes. It keeps the differences between two commit, so we can see what's happened between two commit. These changes stored as relative changes also. However, one of the strict restriction in git, which is an important feature also, we cannot easily modify the history of the commits, so when would like to rewrite the history, we actually has to make a copy from the actual git repository.
 
 In this case, the problem is the same again as I described above. How could we match together the previous step final state with the next step start state. Git raise a "conflict", so the user has to manually resolve this problem. So we are on the same path again with this theory also.
 
@@ -494,9 +494,9 @@ In this case, the problem is the same again as I described above. How could we m
 
 I think, it was great working on the architecture of this project. Thinking about the different element and technology and how these parts connect together. Working with Ember.js is fun and I learned a lot about this modern, matured frontend framework.
 
-Bulding the backend system, and trying out different approach was interesting, especially using Ruby on Rails, which is one of my favourite technology.
+Building the backend system, and trying out different approach was interesting, especially using Ruby on Rails, which is one of my favourite technology.
 
-I am impressed, how complex and advance most of the web based code editor tool. Reviewing them gave me the opportunity to understand more, how they work. Adding Code Mirror to my project was a good joice, because it is feature heavy with an extensive public programming API.
+I am impressed, how complex and advance most of the web based code editor tool. Reviewing them gave me the opportunity to understand more, how they work. Adding Code Mirror to my project was a good choice, because it is feature heavy with an extensive public programming API.
 
 \subsection {Need improvement}
 
@@ -518,7 +518,7 @@ The product evaluation has two parts. The first part is expert evaluation, which
 
 Expert evaluation helps to discover quickly the "low-hanging fruits", obvious usability problems, without investing extra resource for a wide user testing.
 
-My reserach product is a prototype, which cannot be perfect for the first iteration, but already can help us to direct our future study.
+My research product is a prototype, which cannot be perfect for the first iteration, but already can help us to direct our future study.
 
 How the app works and what it does?
 
@@ -536,7 +536,7 @@ Originally, the app did not have any home page, open screen. Based on the feedba
 
 \includegraphics[width=1\textwidth]{assets/tour-screenshots/the-builder.png}\\*[8pt]
 
-This screen is for the contect creators, the admin area. The code editor is in the center, where the content creator can edit the code of the step. On the right side, there is an instruction box. We can see the preview of the website also. During the editing process, the application saves the history of the editing process, so the user can rewoke or add new content.
+This screen is for the content creators, the admin area. The code editor is in the center, where the content creator can edit the code of the step. On the right side, there is an instruction box. We can see the preview of the website also. During the editing process, the application saves the history of the editing process, so the user can revoke or add new content.
 
 Reviewing this area with evaluators, one of the most important feedback was, how could we modify, drag and drop, delete steps and how could we keep the consistency between steps.
 
@@ -611,15 +611,46 @@ I built the survey on Google Survey platform, and it was presented as the follow
 What other features would you like to see in a web based interactive tutorial.
 (open question)
 
-I got 79 answers.
-
-The results from the survey.
-
-\includegraphics[width=1\textwidth]{assets/survey-result/1.png}\\*[8pt]
-
-\includegraphics[width=1\textwidth]{assets/survey-result/2.png}\\*[8pt]
-
 \subsection{Survey analysis}
+
+The survey was running for 3 weeks and I got 82 answers. Contributors are from 20 different countries. 49.35\% from New Zealand, 16.88\% from USA and 5.19\% from Canada. But I got answers from India, Australia, Hungary, Ireland, Brazil, Estonia, Germany and a few other countries also.
+
+The Histogram of Age shows the distribution of ages. Ranges from 20 to 55. The median is 32.
+
+\includegraphics[width=1\textwidth]{assets/survey-result/histogram-of-age.png}\\*[8pt]
+
+For the question about the main motivation for learning new library or tool more than 61\% answered that they just love exploring new technologies and for 43\% needs it for their job.
+
+\includegraphics[width=1\textwidth]{assets/survey-result/main-motivation.png}\\*[8pt]
+
+Only 14.8\% of the participants determined himself as beginner, and almost half of the responders are experienced developers.
+
+\includegraphics[width=1\textwidth]{assets/survey-result/how-experienced.png}\\*[8pt]
+
+The majority prefers to read documentation and see static code examples, when they learn a new framework or library. 30.9\% answered that they like to watch videos about the tool and only 22.2\% try in an interactive code editor.
+
+\includegraphics[width=1\textwidth]{assets/survey-result/prefered-method.png}\\*[8pt]
+
+It is interesting to see, which features are important in a tutorial. We can see in the following graphs, that the majority would prefer the following features:
+\begin{itemize}[noitemsep]
+\item step by step introduction of the usage of the library
+\item can pause, reverse the introduction
+\item can modify the code in a web based code editor
+\end{itemize}
+
+The "share, export or copy" feature is less important.
+
+\includegraphics[width=1\textwidth]{assets/survey-result/features-stepbystep.png}\\*[8pt]
+
+\includegraphics[width=1\textwidth]{assets/survey-result/features-paused.png}\\*[8pt]
+
+\includegraphics[width=1\textwidth]{assets/survey-result/features-modify-code.png}\\*[8pt]
+
+\includegraphics[width=1\textwidth]{assets/survey-result/features-sharing.png}\\*[8pt]
+
+The survey shows, that developers are still prefer to read a good documentation when they experiment with a new library or framework, however if there would be some interactive option they would play with this dynamic introduction.
+
+The survey helps to direct the focus of the most important features in the future work in this topic. The interactive code editor and playing forward/backward the steps of a tutorial are important, however sharing, copying code is less important.
 
 \section{Conclusion}
 
@@ -637,7 +668,7 @@ The fourth section of the application is a complex dashboard, which presents a m
 
 The step by step tutorial is just a beginning. I already visualized a much bigger project, which actually can be really helpful for teachers and for students also.
 
-My original plan was to show how could you build a more complex application. When we build a web app, we deal with a bunch of files and complex directory structure. So many moving parts. Keeping this in sync and showing the changes of directories and file content, we usually use git in software development. One of the obvious choice could be to bring together a step-by-step builder tool, like this prototype and Git repository management. Each git commit would be a step in the tutorial. Most of the git repository management website has a public API, it can help us to show the steps on our website, in our code editor. However it would introduce the same problem as we already have in this prototype. How can we go back in time and change an earlier step, with keeping the history and the consistency between steps.
+My original plan was to show how could you build a more complex application. When we build a web app, we deal with a bunch of files and complex directory structure. So many moving parts. Keeping this in sync and showing the changes of directories and file content, we usually use git in software development. One of the obvious choice would be to bring together a step-by-step builder tool, like this prototype and Git repository management. Each git commit would be a step in the tutorial. Most of the git repository management website has a public API, it can help us to show the steps on our website, in our code editor. However it would introduce the same problem as we already have in this prototype. How can we go back in time and change an earlier step, with keeping the history and the consistency between steps.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -700,4 +731,5 @@ Ember Mirage - \url{http://www.ember-cli-mirage.com/}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
+
 

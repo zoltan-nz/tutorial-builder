@@ -124,6 +124,10 @@ During the development and research work, I found a few related interesting proj
 
 I found this project when I checked the most popular web-based code editor tool, CodeMirror website. The creator of the CodeMirror wanted to present their tool with a realistic way, so CodeMirror Movie was born. \cite{cm-movie}
 
+A content creator, a tutorial builder can use CodeMirror Movie to script a step by step tutorial. There is a special scripting language which can help to build a "movie" which presents a code editing process. The content creator, our primary persona can add comments also to each step.
+
+The content consumer, our secondary persona, who would like to learn or practice, can watch this "movie", can stop and restart. They can follow the editing process and can see the comments. At the end of the tutorial, the content consumer can click in the code editor and can edit.
+
 This solution highly coupled with CodeMirror, it is similar to an add-on, so it is possible to attach any CodeMirror implementation. (More about CodeMirror in Section \ref{comparison})
 
 Adding CodeMirror Movie to our project is straightforward because the open source repository provides a CSS and a JS file, so they can be added to any page.
@@ -133,6 +137,10 @@ This tool mainly targets web-developers, so with the help of this tool they can 
 Editing "the movie" script is manual. There is a simple syntax which control the presentation steps and this script should be added to the textarea which will be in the code editor.
 
 We clearly see that it is a very effective way to build a presentation, however it requires real development skills.
+
+Viewing this tool from our personas perspective, we can clearly state, the content creator does not get an easy to use solution. CodeMirror Movie does not have any graphical user interface for creating content, it can be managed by scripting. Easy to use graphical interface is an important requirement.
+
+Our secondary persona, the content consumer can play and stop the tutorial, can choose individual step and can use the code editor for experimenting with the example. From their perspective, the CodeMirror Movie is almost an ideal tool.
 
 \noindent Pros:
 \begin{itemize}[noitemsep]
@@ -146,7 +154,6 @@ Cons:
 \item mainly for developers only
 \item highly coupled with CodeMirror
 \end{itemize}
-
 
 \section{Comparison of online code editors} \label{comparison}
 
@@ -182,6 +189,10 @@ I will use CodeMirror in my prototype, because it has already Ember.js support. 
 \item Ember.js Addon: none
 \end{itemize}
 
+A good code editor is an important part of a tutorial builder. The content creator persona prefers a code editor which helps editing, can autocomplete, can save the history of the editing process and supports undo and redo features.
+
+A content consumer persona can process the content faster, if the code editor supports highlighting, the code is strictly structured and formatted with proper indentation.
+
 \section{Reviewing code sharing websites}
 
 We can use code editor and sharing platforms also when we want to demo a small feature or describe a problem. These websites are combinations of code editors and an iframe where we can see the preview of the code snippets.
@@ -197,6 +208,8 @@ User can save the edited content also. Most of them can be embed in a blog post 
 \item Saving the different type of code (css, javascript, html) separately.
 \end{itemize}
 
+Our target group, content and tutorial creators use code sharing websites for demonstrating solutions. The main problem with code sharing websites that they show a static state, mainly the final version of a tutorial. As a result the content consumer can not see the interim steps.
+
 \newpage
 
 \includegraphics[width=1\textwidth]{assets/code-sharing-website-review}\\*[8pt]
@@ -204,6 +217,8 @@ User can save the edited content also. Most of them can be embed in a blog post 
 \chapter{Design}
 
 \section{Requirements}
+
+We have seen in our previous chapter, that there are tools, which provide partially solution for tutorial builders and tutorial consumers. However a combination of these tools would support more our primary and secondary personas.
 
 A fully functional tutorial service could have the following requirement list. We can separate them in three different groups. One group focuses on requirements for the tutorial creator/admin/teacher, and an other group for the consumer/students and a separate group of requirements for user interface considerations.
 
@@ -246,29 +261,7 @@ A fully functional tutorial service could have the following requirement list. W
 \item Tutorials page where Students can select and watch tutorials. (The Player)
 \end{itemize}
 
-\section{The technology of choice}
-
-One of the most popular programming languages in web development is JavaScript. The usage of this frontend focused technology is growing quickly.  It is the 7th on Tiobe Index, which is a good indicator of programming languages popularity. \cite{tiobe}
-
-Learning and teaching JavaScript, HTML and CSS is important. My tool focuses on this three main building blocks of the web.
-
-Building a frontend heavy application, with a dynamic, user-friendly interface is more common nowadays. In the last few years JavaScript based frontend frameworks became mature, production ready tools. Server side technologies, like database management and time and resource heavy processes are separated from the user focused, design driven view layer, which is developed with usage of frontend frameworks.
-
-The most popular tools are Angular.js, React.js and Ember.js. In my project I use Ember.js. It is an "opinionated" framework. Opinionated, convention over configuration driven framework means that developers should follow specific conventions, instead of using the tool freely. A more strict environment helps to adopt best practices and speeds up the development process.
-
-Certainly, we still have to store data and information, so we cannot live without backend and server technology. Luckily there are already cloud-based tools for managing databases. I use Firebase \cite{firebase}, which is a service provided by Google. Firebase is a cloud-based database, document-store solution and easy to integrate with Ember.js.
-
-Additionally, I started building a traditional backend server application also to support development and experimenting with a real server side and a cloud-based solutions parallel. My preferred technology on backend side is Ruby on Rails, a popular, also opinionated and convention over configuration driven backend framework. However, I added only one model to this backend, because finally I just focused on the Firebase implementation.
-
-Following the most modern standard of web applications, I separate the user faced frontend development and the data store, backend development.
-
-The user face frontend application uses Ember.js frontend framework. Ember.js development requires Node.js on the development machine to run the development environment. This development environment helps to run and modify frontend code quickly, and it generates the final, deployable production code also. The production version of the application is only a static website. It means, there is one index.html, two JavaScript files and two CSS files.
-
-\section{Source control management}
-
-I have been using GitHub for managing source code and tracking code changes. Link to repository: \url{https://github.com/zoltan-nz/tutorial-builder}
-
-\section{Database design considerations}
+\section{Database design considerations} \label{database-design}
 
 One of the core element of an application is the database and model layer. Determining data entities are an important step of the planning process and it helps us in the implementation process.
 
@@ -278,40 +271,67 @@ Our main problem domain is tutorials, one of the most important models is the en
 
 Simply: Tutorial -\textgreater Lesson -\textgreater Step
 
-The demo app uses this nested model structure in the "Dashboard" section. During the implementation process, my first iteration tried to cover this wider use case, however, I realized, the challenge is not really on this area.
+More about the final implementation in Section \ref{database-implementation}.
 
-Finally I created a "builder" model and a "builder-step" model.
+\section{Managing history changes} \label{history}
 
-Builder model fields: name (string), builderSteps (hasMany)
+In a step by step tutorial builder, one of the core functionalities is adding steps to a tutorial. It is important also that we should be able to edit, modify, delete, reorganize these steps.
 
-BuilderStep model fields: builder (belongsTo), sort (number), comment (string), code (string)
+A programming tutorial’s main content is code. Code has lines. Usually in the first step we add a few lines, so there will be two-three lines of code in the code editor. In the next steps we add more and more. We extend lines, remove lines. Each step is based on the previous state, the code in the code editor incrementally changes.
 
-With this simplified structure I was able to focus only the implementation of the tutorial and step builder functionality.
+Let's say we have 4-5 steps and we would like to remove the code what we saved in the Step 3. After these changes, Step 2 should be the start state of the Step 4, so we should manually adjust Step 4 starting state to be the same as the end state of the Step 2. We can show the difference between the final state of the Step 2 and the actual start state of the Step 4 with highlighting, and we can ask the user to adjust the code. This process looks simple when we talk about a few lines of code. However, when we build a bigger tutorial, this adjustment process could be a nightmare.
 
-This graph summarizes these database tables and models:
+I was thinking about this problem a lot, and I tried to use the following simplification to solve this problem.
 
-\includegraphics[width=1\textwidth]{assets/database-tables}\\*[8pt]
+One of the ideas is creating a snapshot at the beginning of a step and at the final state of a step.
 
+In the following abstraction, H1, H2... are history elements, they represent actions. S1, S2... are steps. L1, L2... are lines of code.
+
+\begin{itemize}[noitemsep]
+\item H1. Snapshot N1, "Empty state"
+\item H2. Create Step S1, add Line L1
+\item H3. Snapshot N2 = H1 + H2.
+\item H4. Create Step S2, add Line L2
+\item H5. Snapshot N3 = H3 + H4
+\item H6. Modify Step S1, add new Line after L1
+\item H7. Update Snapshot N2 = H1 + H2 + H6
+\item H8. Update Snapshot N3 = H7 + H3
+\end{itemize}
+
+In this concept a snapshot is like a pointer, which collects together the connected history elements.
+
+However, this concept can work only if all the changes made in the code editor saved as relative changes. For example, if I have something in the Line 1 and we add something else in the Line 2, I save the changes as "add a line after the last line of the previous step", so if we delete the Step 1, the relative instruction still can work.
+
+Unfortunately, managing relative history is not possible with Code Mirror at the moment. My plan is to extend the tool with this feature in a following project.
+
+I was thinking about another theory. We use git. Git main feature is tracking changes. It keeps the differences between two commits, so we can see what happens between two commits. These changes stored as relative changes also. However, one of the strict restrictions in git, which is an important feature, we cannot easily modify the history of commits. When we would like to override the history, we actually has to make a copy from the git repository.
+
+In this case, the problem is the same again as I described above. How can we match the previous step final state with the next step start state. When we use git and we try to commit a change which collide with other change git raises a "conflict". The user has to manually resolve this problem. So we are on the same path again with this theory also: manual resolving.
+
+The answer for this problem that we cannot avoid from manual resolving, however we can make it more comfortable with a user friendly implementation.
+
+\section{User experience}
+
+\subsection{Step builder wireframe}
+
+The Step Builder is one of the core elements of our application. Our main content creator persona will use this form to add a new content, a new step to the tutorial.
+
+The Figure \ref{fig:step-builder-wireframe} shows the important fragments of the interface. A vertical box can show the list of steps, a form can manage the content of a step. A preview window is also important to see the actual state of the tutorial. An advance feature is to separate content or customize the form based on the content type (css, html, JavaScript).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{assets/step-builder-wireframe.png}
+\caption{Step Builder wireframe}
+\label{fig:step-builder-wireframe}
+\end{figure}
+
+\subsection{Breadcrumbs}
+
+One of the most important rules in UX, that the user should not be confused. When they use a website and navigate in different area, they have to know where they are. Usually below the navigation bar, there is a section, where we show the actual position of the user inside the site architecture. It is called breadcrumbs.
+
+More about the implementation in Section \ref{breadcrumbs-implementation}.
 
 \chapter{Implementation}
-
-\section{Frontend features}
-
-The look and feel of the application follows the standard Bootstrap style. Bootstrap is added to the project. I use "sass" version of the Bootstrap, so I can customize it with the modification of the "sass" variables. "Sass" is a modern CSS development environment that helps to modify the CSS programmatically.
-
-The home page of the application is only a placeholder. I added a navigation bar with the following links: Home, Builder, Player, Sandboxes, and Dashboard.
-
-I implemented a breadcrumb bar also which helps in navigation.
-
-First, I created a Sandbox area, where I experimented with the CodeMirror code editor. An iFrame is also added to this page which shows the preview. This Sandbox page contains the editor. When the source code is updated, the preview page automatically renders the generated website. This feature uses Ember.js default two-way bindings capability.
-
-Database management is already implemented. The main adapter is the Firebase adapter which automatically updates data to the Firebase server. Firebase is a real time database. The limited, free to use version is enough for experimenting and for demo purposes.
-
-The secondary adapter is a JSONApi Adapter. JSONApi \cite{jsonapi} is a new standard of data communication format which is the Ember.js default adapter. It is only active when I use Ruby on Rails based backend system. JSONAPi adapter is commented out in the production version, because I have not added all model to the Ruby on Rails app. I keep it there, because the further development of this project will focus on this backend instead of using Firebase.
-
-\section{Static website hosting}
-
-I have been using surge.sh \cite{surge} for static website hosting, so the actual state of the prototype is updated there regularly. Link to the live version: \url{http://tutorial-builder.surge.sh}
 
 \section{The story of 12 factor apps}
 
@@ -342,6 +362,42 @@ I think, it is important to follow this methodology in our application also. Ins
 11. Logs. This feature can be adopted in our environment, but it is not active in our experimental project.
 
 12. Admin processes. Our database administration focuses only for maintaining, deleting the Firebase database, it can be done on Firebase website as a single process.
+
+\section{The technology of choice}
+
+One of the most popular programming languages in web development is JavaScript. The usage of this frontend focused technology is growing quickly.  It is the 7th on Tiobe Index, which is a good indicator of programming languages popularity. \cite{tiobe}
+
+Learning and teaching JavaScript, HTML and CSS is important. My tool focuses on this three main building blocks of the web.
+
+Building a frontend heavy application, with a dynamic, user-friendly interface is more common nowadays. In the last few years JavaScript based frontend frameworks became mature, production ready tools. Server side technologies, like database management and time and resource heavy processes are separated from the user focused, design driven view layer, which is developed with usage of frontend frameworks.
+
+The most popular tools are Angular.js, React.js and Ember.js. In my project I use Ember.js. It is an "opinionated" framework. Opinionated, convention over configuration driven framework means that developers should follow specific conventions, instead of using the tool freely. A more strict environment helps to adopt best practices and speeds up the development process.
+
+Certainly, we still have to store data and information, so we cannot live without backend and server technology. Luckily there are already cloud-based tools for managing databases. I use Firebase \cite{firebase}, which is a service provided by Google. Firebase is a cloud-based database, document-store solution and easy to integrate with Ember.js.
+
+Additionally, I started building a traditional backend server application also to support development and experimenting with a real server side and a cloud-based solutions parallel. My preferred technology on backend side is Ruby on Rails, a popular, also opinionated and convention over configuration driven backend framework. However, I added only one model to this backend, because finally I just focused on the Firebase implementation.
+
+Following the most modern standard of web applications, I separate the user faced frontend development and the data store, backend development.
+
+The user face frontend application uses Ember.js frontend framework. Ember.js development requires Node.js on the development machine to run the development environment. This development environment helps to run and modify frontend code quickly, and it generates the final, deployable production code also. The production version of the application is only a static website. It means, there is one index.html, two JavaScript files and two CSS files.
+
+\section{Source control management}
+
+I have been using GitHub for managing source code and tracking code changes. Link to repository: \url{https://github.com/zoltan-nz/tutorial-builder}
+
+\section{Static website hosting}
+
+I have been using surge.sh \cite{surge} for static website hosting, so the actual state of the prototype is updated there regularly. Link to the live version: \url{http://tutorial-builder.surge.sh}
+
+\section{Frontend features}
+
+The look and feel of the application follows the standard Bootstrap style. Bootstrap is added to the project. I use "sass" version of the Bootstrap, so I can customize it with the modification of the "sass" variables. "Sass" is a modern CSS development environment that helps to modify the CSS programmatically.
+
+The home page of the application is only a placeholder. I added a navigation bar with the following links: Home, Builder, Player, Sandboxes, and Dashboard.
+
+I implemented a breadcrumb bar also which helps in navigation.
+
+I created a Sandbox area, where I experimented with the CodeMirror code editor. An iFrame is also added to this page which shows the preview. This Sandbox page contains the editor. When the source code is updated, the preview page automatically renders the generated website. This feature uses Ember.js default two-way bindings capability.
 
 \section{Data down actions up}
 
@@ -393,9 +449,7 @@ I followed the documentation on the Code Mirror official website and the Ember A
 
 I wanted to extend the editor with the widely used "Emmet" feature. Emmet is a code editing mode of html and css and it automatically completes your code when you type. One of the real challenges was to implement this addition. (Read more: Section \ref{emmet}.)
 
-\subsection{Breadcrumbs}
-
-One of the most important rules in UX, that the user should not be confused. When they use a website and navigate in different area, they have to know where they are. Usually below the navigation bar, there is a section, where we show the actual position of the user inside the site architecture. It is called breadcrumbs.
+\subsection{Breadcrumbs implementation} \label{breadcrumbs-implementation}
 
 Adding breadcrumbs to the project started with a search. We can find Ember.js addons on \url{www.emberobserver.com}. The most popular breadcrumb addon is ember-crumbly \cite{ember-crumbly}.
 
@@ -421,6 +475,31 @@ You can see the implementation in this screenshot:
 
 \includegraphics[width=1\textwidth]{assets/wormhole-screenshot.png}\\*[8pt]
 
+\subsection{Implemented database model} \label{database-implementation}
+
+The demo app uses a nested model structure in the "Dashboard" section, which was suggested in the Design section (\ref{database-design}). During the implementation process, my first iteration tried to cover this wider use case, however, I realized, the challenge is not really on this area.
+
+Finally I created a "builder" model and a "builder-step" model.
+
+Builder model fields: name (string), builderSteps (hasMany)
+
+BuilderStep model fields: builder (belongsTo), sort (number), comment (string), code (string)
+
+With this simplified structure I was able to focus only the implementation of the tutorial and step builder functionality.
+
+\ref{fig:database-tables} summarizes these database tables and models.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{assets/database-tables}
+\caption{Database tables}
+\label{fig:database-tables}
+\end{figure}
+
+The communication between the frontend and backend services is managed by adapters. The main adapter is the Firebase adapter which automatically updates data to the Firebase server. Firebase is a real time database. The limited, free to use version is enough for experimenting and for demo purposes.
+
+The secondary adapter is a JSONApi Adapter. JSONApi \cite{jsonapi} is a new standard of data communication format which is the Ember.js default adapter. It is only active when I use Ruby on Rails based backend system. JSONAPi adapter is commented out in the production version, because I have not added all model to the Ruby on Rails app. I keep it there, because the further development of this project will focus on this backend instead of using Firebase.
+
 \section{Challenges}
 
 \subsection{Adding Emmet to Code Mirror} \label{emmet}
@@ -435,7 +514,7 @@ In my codebase, you can find a unique special component, which initialize Emmet 
 
 Thanks to this changes, in my final implementation you can use this Emmet editing feature in each editor window.
 
-\subsection{Database management}
+\subsection{Data stores}
 
 Managing database and choosing the right solution always require more research and multiple iterations.
 
@@ -448,43 +527,6 @@ Firstly, I tried to build a unique backend system in Ruby on Rails. You can find
 However, implementing a full backend system is a big overhead in a smaller prototype project like this.
 
 Secondly, I tried to use a mocking system, which is popular in Ember.js ecosystem. This mocking addon is called Ember Mirage \cite{ember-mirage}. When you use a mocking system in a frontend application, you can run the application without any backend support, because all the database related backend response is generated by an other JavaScript code. You can read and save data. It is super fast and easy to experiment with it. The only disadvantage of it is that the data is saved temporarily. If you close the web browser, all data will be deleted. Usually we use "fixtures" for pre populate the database when we open the app. I experimented with this mocking system, but finally I went back to Firebase, because it was important to me to upload the app to a public server, and to connect it to a real database. I have just continued the development process with Firebase.
-
-\section{Managing history changes} \label{history}
-
-In a step by step tutorial builder, one of the core functionalities is adding steps to a tutorial. It is important also that we should be able to edit, modify, delete, reorganize these steps.
-
-A programming tutorial’s main content is code. Code has lines. Usually in the first step we add a few lines, so there will be two-three lines of code in the code editor. In the next steps we add more and more. We extend lines, remove lines. Each step is based on the previous state, the code in the code editor incrementally changes.
-
-Let's say we have 4-5 steps and we would like to remove the code what we saved in the Step 3. After these changes, Step 2 should be the start state of the Step 4, so we should manually adjust Step 4 starting state to be the same as the end state of the Step 2. We can show the difference between the final state of the Step 2 and the actual start state of the Step 4 with highlighting, and we can ask the user to adjust the code. This process looks simple when we talk about a few lines of code. However, when we build a bigger tutorial, this adjustment process could be a nightmare.
-
-I was thinking about this problem a lot, and I tried to use the following simplification to solve this problem.
-
-One of the ideas is creating a snapshot at the beginning of a step and at the final state of a step.
-
-In the following abstraction, H1, H2... are history elements, they represent actions. S1, S2... are steps. L1, L2... are lines of code.
-
-\begin{itemize}[noitemsep]
-\item H1. Snapshot N1, "Empty state"
-\item H2. Create Step S1, add Line L1
-\item H3. Snapshot N2 = H1 + H2.
-\item H4. Create Step S2, add Line L2
-\item H5. Snapshot N3 = H3 + H4
-\item H6. Modify Step S1, add new Line after L1
-\item H7. Update Snapshot N2 = H1 + H2 + H6
-\item H8. Update Snapshot N3 = H7 + H3
-\end{itemize}
-
-In this concept a snapshot is like a pointer, which collects together the connected history elements.
-
-However, this concept can work only if all the changes made in the code editor saved as relative changes. For example, if I have something in the Line 1 and we add something else in the Line 2, I save the changes as "add a line after the last line of the previous step", so if we delete the Step 1, the relative instruction still can work.
-
-Unfortunately, managing relative history is not possible with Code Mirror at the moment. My plan is to extend the tool with this feature in a following project.
-
-I was thinking about another theory. We use git. Git main feature is tracking changes. It keeps the differences between two commits, so we can see what happens between two commits. These changes stored as relative changes also. However, one of the strict restrictions in git, which is an important feature, we cannot easily modify the history of commits. When we would like to override the history, we actually has to make a copy from the git repository.
-
-In this case, the problem is the same again as I described above. How can we match the previous step final state with the next step start state. When we use git and we try to commit a change which collide with other change git raises a "conflict". The user has to manually resolve this problem. So we are on the same path again with this theory also: manual resolving.
-
-The answer for this problem that we cannot avoid from manual resolving, however we can make it more comfortable with a user friendly implementation.
 
 \section{Reflection}
 
@@ -504,7 +546,7 @@ As I already explained it in the challenging section, managing history, deleting
 
 This project is about experimenting and learning new tools, solving problems and developing solutions. This process is obviously involve steps which does not produce real value at the end, however these steps are the necessary cost for finding the right direction.
 
-I feel, my plan was too ambitious at the beginning, and I had to realize that implementing what I imagined had its own challanges. Reducing the scope as early as possible is always better.
+I feel, my plan was too ambitious at the beginning, and I had to realize that implementing what I imagined had its own challenges. Reducing the scope as early as possible is always better.
 
 \chapter{Evaluation}
 
@@ -518,7 +560,11 @@ Expert evaluation helps to discover quickly the "low-hanging fruits", obvious us
 
 My research product is a prototype, which cannot be perfect for the first iteration, but it can already help us to direct our future study.
 
-Here is a walkthrough on how the app works and what it does.
+Expert evaluators are my colleagues. 4 developers and 1 UX designer. In each case I followed the same process. I showed them my prototype and I asked them to build a simple tutorial. The task was to create a tutorial with 3-4 steps which shows how can you build a basic Hello World website with Bootstrap. I made notes about their feedback, questions and difficulties.
+
+This evaluation focused on the content creator features, so the evaluators are represented our primary persona, the open source project maintainer or teacher persona.
+
+Here is a walkthrough on how the app works, what it does and feedbacks from the evaluators.
 
 \newpage
 
@@ -526,7 +572,7 @@ Here is a walkthrough on how the app works and what it does.
 
 \includegraphics[width=1\textwidth]{assets/tour-screenshots/home-page.png}\\*[8pt]
 
-Originally, the app did not have any home page. Based on the feedbacks from the expert evaluators, there is a home screen with the title. It is mainly a placeholder.
+Originally, the app did not have any home page. Based on the feedbacks from the expert evaluators, there is a home screen with the title. It is mainly a placeholder. Originally, there was not any homepage, but all evaluators mentioned the lack of it.
 
 \newpage
 
@@ -536,7 +582,7 @@ Originally, the app did not have any home page. Based on the feedbacks from the 
 
 This screen is for the content creators, the admin area. The code editor is in the center, where the content creator can edit the source code and a step. On the right side, there is an instruction box. We can see the preview of the website. During the editing process, the application saves the history of changes, so the user can revoke or add new content.
 
-Reviewing this area with evaluators, one of the most important feedbacks was, how we can modify, drag and drop, delete steps; and how we can keep the consistency between steps. These feedbacks reflect the same questions that we described in the previous section \ref{history}.
+Reviewing this area with evaluators, one of the most important feedbacks was, how we can modify, drag and drop, delete steps; and how we can keep the consistency between steps. These feedbacks reflect the same questions that we described in the Chapter \ref{history}. 4 from 5 evaluators wanted to reorganize steps with drag and drop. 3 evaluators deleted steps and recognized the inconsistency between steps after this action. They manually adjusted the content in the connected steps, to keep the consistency again.
 
 \newpage
 
@@ -545,6 +591,8 @@ Reviewing this area with evaluators, one of the most important feedbacks was, ho
 \includegraphics[width=1\textwidth]{assets/tour-screenshots/the-player.png}\\*[8pt]
 
 This screen is for the content consumers, the player area. User can go forward and backward between steps. User can experiment with the code and can see the preview of the code example.
+
+In the next chapter we read more about a survey which focuses of the secondary persona requirements.
 
 \newpage
 
@@ -569,6 +617,15 @@ This area represents the described database model. In a realistic implementation
 Watching, reading or following tutorials are important part of our learning process, but everybody can have different motivation. I launched a survey for collecting information about user's motivation and their goals.
 
 Victoria University ethics committee approved my request, so I was able to run a little campaign on my twitter, on my blog, and shared the link in different developer chat groups.
+
+The survey focuses on our secondary persona. I tried to reach participants who more likely are tutorial content consumers, students, developers. For this reason, I shared the link on my tutorial website (\url{www.yoember.com}). This website's visitors are in our target group. I shared the link on Slack groups, what are mainly used by students or developers who would like to learn new skills. (Enspiral Dev Academy Slack Channel, Yoember Slack Channel, JavaScript New Zealand Slack Channel). Twitter was also efficient in the participant recruitment process as we can see in the Figure \ref{fig:twitter}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1\textwidth]{assets/tweet-activity.png}
+\caption{Tweet activity}
+\label{fig:twitter}
+\end{figure}
 
 I built the survey on Google Survey platform, and it was presented as the following screenshot shows.
 

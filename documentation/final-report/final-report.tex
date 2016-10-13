@@ -1,4 +1,4 @@
-\documentclass[12pt, a4paper, oneside, openright, medskipamount]{report}
+\documentclass[11pt, a4paper, oneside, openright, medskipamount]{report}
 
 \usepackage{float}
 \usepackage{url}
@@ -25,7 +25,7 @@ Tutorial Builder \\
 
 \supervisor{Dr Stuart Marshall}
 
-\date{14th October 2016}
+\date{16th October 2016}
 
 \begin{document}
 
@@ -210,9 +210,14 @@ User can save the edited content also. Most of them can be embed in a blog post 
 
 Our target group, content and tutorial creators use code sharing websites for demonstrating solutions. The main problem with code sharing websites that they show a static state, mainly the final version of a tutorial. As a result the content consumer can not see the interim steps.
 
-\newpage
+Comparison of the code sharing websites in Figure \ref{fig:code-sharing-website-review}
 
-\includegraphics[width=1\textwidth]{assets/code-sharing-website-review}\\*[8pt]
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{assets/code-sharing-website-review}
+\caption{Code sharing website review}
+\label{fig:code-sharing-website-review}
+\end{figure}
 
 \chapter{Design}
 
@@ -318,7 +323,7 @@ The Step Builder is one of the core elements of our application. Our main conten
 
 The Figure \ref{fig:step-builder-wireframe} shows the important fragments of the interface. A vertical box can show the list of steps, a form can manage the content of a step. A preview window is also important to see the actual state of the tutorial. An advance feature is to separate content or customize the form based on the content type (css, html, JavaScript).
 
-\begin{figure}[htbp]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=1\textwidth]{assets/step-builder-wireframe.png}
 \caption{Step Builder wireframe}
@@ -327,9 +332,7 @@ The Figure \ref{fig:step-builder-wireframe} shows the important fragments of the
 
 \subsection{Breadcrumbs}
 
-One of the most important rules in UX, that the user should not be confused. When they use a website and navigate in different area, they have to know where they are. Usually below the navigation bar, there is a section, where we show the actual position of the user inside the site architecture. It is called breadcrumbs.
-
-More about the implementation in Section \ref{breadcrumbs-implementation}.
+One of the most important rules in UX, that the user should not be confused. When they use a website and navigate in different area, they have to know where they are. Usually below the navigation bar, there is a section, where we show the actual position of the user inside the site architecture. It is called breadcrumbs. More about the implementation in Section \ref{breadcrumbs-implementation}.
 
 \chapter{Implementation}
 
@@ -455,9 +458,14 @@ Adding breadcrumbs to the project started with a search. We can find Ember.js ad
 
 This package was added with the "ember install" command line tool to the project. I was able to insert a bootstrap compatible breadcrumb under the navigation bar, which automatically updates when we navigate to a new page.
 
-Screenshot about the implementation:
+Screenshot about the implementation in Figure \ref{fig:breadcrumb-screenshot}.
 
-\includegraphics[width=1\textwidth]{assets/breadcrumb-screenshot.png}\\*[8pt]
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{assets/breadcrumb-screenshot.png}
+\caption{Screenshot about breadcrumbs implementation}
+\label{fig:breadcrumb-screenshot}
+\end{figure}
 
 \subsection{Communication between two components}
 
@@ -471,9 +479,14 @@ Luckily other developers already solved this problem. "Ember-wormhole" addon is 
 
 In my step editor, there is an "Undo/Redo" button component, which belongs to the Step editor form. It is on the right side of the page. This wormhole plugin helped me to keep these two parts are connected.
 
-You can see the implementation in this screenshot:
+You can see the implementation in Figure \ref{fig:wormhole}
 
-\includegraphics[width=1\textwidth]{assets/wormhole-screenshot.png}\\*[8pt]
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{assets/wormhole-screenshot.png}
+\caption{Using Ember Wormhole}
+\label{fig:wormhole}
+\end{figure}
 
 \subsection{Implemented database model} \label{database-implementation}
 
@@ -487,7 +500,7 @@ BuilderStep model fields: builder (belongsTo), sort (number), comment (string), 
 
 With this simplified structure I was able to focus only the implementation of the tutorial and step builder functionality.
 
-\ref{fig:database-tables} summarizes these database tables and models.
+Figure \ref{fig:database-tables} summarizes these database tables and models.
 
 \begin{figure}[htbp]
 \centering
@@ -736,11 +749,11 @@ My original plan was to show how you can build a more complex application. When 
 
 \begin{thebibliography}{9}
 
-\bibitem{tiobe}
-Tiobe.com - \url{http://www.tiobe.com/tiobe_index}
-
 \bibitem{cm-movie}
 CodeMirror Movie - \url{https://github.com/sergeche/codemirror-movie}
+
+\bibitem{tiobe}
+Tiobe.com - \url{http://www.tiobe.com/tiobe_index}
 
 \bibitem{firebase}
 Firebase - \url{https://firebase.google.com}

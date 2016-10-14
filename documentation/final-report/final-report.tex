@@ -39,7 +39,7 @@ Technical content producers are struggling to find an efficient and interactive 
 
 This research introduces a experimental prototype that can be a conceptual tool for creating an interactive tutorial.
 
-Furthermore this prototype shows programming code snippets in web based code editor so the content creator can build a playable step by step "movie" with it.
+Furthermore, this prototype shows programming code snippets in web based code editor so the content creator can build a playable step by step "movie" with it.
 
 Project source code: \url{http://github.com/zoltan-nz/tutorial-builder}
 
@@ -126,7 +126,7 @@ I found this project when I checked the most popular web-based code editor tool,
 
 A content creator, a tutorial builder can use CodeMirror Movie to script a step by step tutorial. There is a special scripting language which can help to build a "movie" which presents a code editing process. The content creator, our primary persona can add comments also to each step.
 
-The content consumer, our secondary persona, who would like to learn or practice, can watch this "movie", can stop and restart. They can follow the editing process and can see the comments. At the end of the tutorial, the content consumer can click in the code editor and can edit.
+The content consumer, our secondary persona, who would like to learn or practice, they can watch, stop and restart this "movie". They can follow the editing process and see the comments. At the end of the tutorial, the content consumer can click in the code editor, and they are able to edit.
 
 This solution highly coupled with CodeMirror, it is similar to an add-on, so it is possible to attach any CodeMirror implementation. (More about CodeMirror in Section \ref{comparison})
 
@@ -140,7 +140,7 @@ We clearly see that it is a very effective way to build a presentation, however 
 
 Viewing this tool from our personas perspective, we can clearly state, the content creator does not get an easy to use solution. CodeMirror Movie does not have any graphical user interface for creating content, it can be managed by scripting. Easy to use graphical interface is an important requirement.
 
-Our secondary persona, the content consumer can play and stop the tutorial, can choose individual step and can use the code editor for experimenting with the example. From their perspective, the CodeMirror Movie is almost an ideal tool.
+Our secondary persona, the content consumer can play and stop the tutorial, can choose individual steps and can use the code editor for experimenting with the example. From their perspective, the CodeMirror Movie is almost an ideal tool.
 
 \noindent Pros:
 \begin{itemize}[noitemsep]
@@ -189,7 +189,7 @@ I will use CodeMirror in my prototype, because it has already Ember.js support. 
 \item Ember.js Addon: none
 \end{itemize}
 
-A good code editor is an important part of a tutorial builder. The content creator persona prefers a code editor which helps editing, can autocomplete, can save the history of the editing process and supports undo and redo features.
+A good code editor is an important part of any tutorial builder. The content creator persona prefers a code editor which helps in editing and autocompleting, also it is able to save the history of the editing process and supports undo and redo features.
 
 A content consumer persona can process the content faster, if the code editor supports highlighting, the code is strictly structured and formatted with proper indentation.
 
@@ -210,7 +210,7 @@ User can save the edited content also. Most of them can be embed in a blog post 
 
 Our target group, content and tutorial creators use code sharing websites for demonstrating solutions. The main problem with code sharing websites that they show a static state, mainly the final version of a tutorial. As a result the content consumer can not see the interim steps.
 
-Comparison of the code sharing websites in Figure \ref{fig:code-sharing-website-review}
+Comparison of the code sharing websites is in Figure \ref{fig:code-sharing-website-review}
 
 \begin{figure}[ht]
 \centering
@@ -223,7 +223,7 @@ Comparison of the code sharing websites in Figure \ref{fig:code-sharing-website-
 
 \section{Requirements}
 
-We have seen in our previous chapter, that there are tools, which provide partially solution for tutorial builders and tutorial consumers. However a combination of these tools would support more our primary and secondary personas.
+We have seen in our previous chapter, there are tools that provide limited solution for tutorial builders and tutorial consumers. However, a combination of these tools would support more our primary and secondary personas.
 
 A fully functional tutorial service could have the following requirement list. We can separate them in three different groups. One group focuses on requirements for the tutorial creator/admin/teacher, and an other group for the consumer/students and a separate group of requirements for user interface considerations.
 
@@ -573,11 +573,11 @@ Expert evaluation helps to discover quickly the "low-hanging fruits", obvious us
 
 My research product is a prototype, which cannot be perfect for the first iteration, but it can already help us to direct our future study.
 
-Expert evaluators are my colleagues. 4 developers and 1 UX designer. In each case I followed the same process. I showed them my prototype and I asked them to build a simple tutorial. The task was to create a tutorial with 3-4 steps which shows how can you build a basic Hello World website with Bootstrap. I made notes about their feedback, questions and difficulties.
+Expert evaluators were my colleagues. 4 developers and 1 UX designer. In each case I followed the same process. I showed them my prototype and I asked them to build a simple tutorial. The task was to create a tutorial with 3-4 steps which shows how to build a basic Hello World website with Bootstrap. I made notes of their feedback, questions and difficulties.
 
 This evaluation focused on the content creator features, so the evaluators are represented our primary persona, the open source project maintainer or teacher persona.
 
-Here is a walkthrough on how the app works, what it does and feedbacks from the evaluators.
+Here is a walkthrough on how the app works, what it does containing feedbacks from the evaluators.
 
 \newpage
 
@@ -585,7 +585,7 @@ Here is a walkthrough on how the app works, what it does and feedbacks from the 
 
 \includegraphics[width=1\textwidth]{assets/tour-screenshots/home-page.png}\\*[8pt]
 
-Originally, the app did not have any home page. Based on the feedbacks from the expert evaluators, there is a home screen with the title. It is mainly a placeholder. Originally, there was not any homepage, but all evaluators mentioned the lack of it.
+Based on the feedbacks from the expert evaluators, there is a home screen with the title which serves mainly as a placeholder at the moment. Originally, there was not any homepage, but all evaluators mentioned the lack of it.
 
 \newpage
 
@@ -595,7 +595,7 @@ Originally, the app did not have any home page. Based on the feedbacks from the 
 
 This screen is for the content creators, the admin area. The code editor is in the center, where the content creator can edit the source code and a step. On the right side, there is an instruction box. We can see the preview of the website. During the editing process, the application saves the history of changes, so the user can revoke or add new content.
 
-Reviewing this area with evaluators, one of the most important feedbacks was, how we can modify, drag and drop, delete steps; and how we can keep the consistency between steps. These feedbacks reflect the same questions that we described in the Chapter \ref{history}. 4 from 5 evaluators wanted to reorganize steps with drag and drop. 3 evaluators deleted steps and recognized the inconsistency between steps after this action. They manually adjusted the content in the connected steps, to keep the consistency again.
+Reviewing this area with evaluators, one of the most important feedbacks was, how we can modify, drag and drop, delete steps; and how we can keep the consistency between steps. These feedbacks reflect the same questions we described in the Chapter \ref{history}. 4 out of 5 evaluators wanted to reorganize steps using drag and drop. 3 evaluators deleted steps and recognized the inconsistency between them  after this action. They manually adjusted the content in the connected steps in order to maintain consistency.
 
 \newpage
 
@@ -631,7 +631,7 @@ Watching, reading or following tutorials are important part of our learning proc
 
 Victoria University ethics committee approved my request, so I was able to run a little campaign on my twitter, on my blog, and shared the link in different developer chat groups.
 
-The survey focuses on our secondary persona. I tried to reach participants who more likely are tutorial content consumers, students, developers. For this reason, I shared the link on my tutorial website (\url{www.yoember.com}). This website's visitors are in our target group. I shared the link on Slack groups, what are mainly used by students or developers who would like to learn new skills. (Enspiral Dev Academy Slack Channel, Yoember Slack Channel, JavaScript New Zealand Slack Channel). Twitter was also efficient in the participant recruitment process as we can see in the Figure \ref{fig:twitter}
+The survey focuses on our secondary persona. I tried to reach participants who more likely are tutorial content consumers, students, developers. For this reason, I shared the link on my tutorial website (\url{http://www.yoember.com}). This website's visitors are in our target group. I shared the link in Slack groups, mainly used by students and developers who would like to learn new skills. (Enspiral Dev Academy Slack Channel, Yoember Slack Channel, JavaScript New Zealand Slack Channel). Twitter was also efficient in the participant recruitment process as we can see in the Figure \ref{fig:twitter}
 
 \begin{figure}[htbp]
 \centering
@@ -802,3 +802,5 @@ Ember Mirage - \url{http://www.ember-cli-mirage.com/}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{document}
+
+

@@ -87,6 +87,4 @@ export default Ember.Controller.extend({
 
     model.save();
   }
-
-
 })

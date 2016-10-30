@@ -47,7 +47,6 @@ export default Ember.Route.extend({
     deleteStep(step) {
       step.destroyRecord();
       this.controller.get('model').save();
-
     }
   }
 });

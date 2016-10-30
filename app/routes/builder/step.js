@@ -1,9 +1,17 @@
 import Ember from "ember";
+import { schedule } from 'ember-runloop';
 
 export default Ember.Route.extend({
 
   model(params) {
     return this.store.findRecord('builder-step', params.id);
+  },
+
+  // Reinitialize the editor at second or later visit
+  activate() {
+    const controller = this.controllerFor('builder.step');
+    if (!controller.get('builderEditor')) return;
+    schedule('afterRender', controller, controller.afterRender.bind(controller));
   },
 
   actions: {
@@ -35,11 +43,6 @@ export default Ember.Route.extend({
       if (!Ember.isEmpty(history)) {
         editor.setHistory(history.get('content'));
       }
-
-
     }
-
-
   }
-
 });

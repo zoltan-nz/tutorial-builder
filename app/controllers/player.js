@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
     return this.get('model').findBy('sort', this.get('activeStep'));
   }),
 
-  source: computed('step', function() {
+  source: computed('step', 'step.code', function() {
     return this.get('step').get('code');
   }),
 
@@ -22,6 +22,11 @@ export default Ember.Controller.extend({
 
     forward() {
       this.incrementProperty('activeStep');
+    },
+
+    // User can modify the code like in playground, it is not persisted in database
+    updateSource(source) {
+      this.set('step.code', source);
     }
   }
 })

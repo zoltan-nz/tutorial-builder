@@ -45,6 +45,8 @@ export default Ember.Route.extend({
   actions: {
 
     deleteStep(step) {
+      const really = confirm('Are you sure?');
+      if (!really) return;
       step.destroyRecord();
       this.controller.get('model').save();
     }
